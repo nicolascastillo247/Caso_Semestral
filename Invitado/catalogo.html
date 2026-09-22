@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Chibson Instruments</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link href="css/miestilo.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+    <header class="main-header border-bottom py-3">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <h1 class="h3 m-0 brand-title">Chibson Instruments</h1>
+            <nav aria-label="Navegación principal">
+                <ul class="nav">
+                    <li class="nav-item"><a href="index.html" class="nav-link px-2">Inicio</a></li>
+                    <li class="nav-item"><a href="catalogo.html" class="nav-link px-2 active fw-bold">Catálogo</a></li>
+                    <li class="nav-item"><a href="nosotros.html" class="nav-link px-2">Nosotros</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link px-2">Iniciar Sesión</a></li>
+                    <li class="nav-item"><a href="registro.html" class="nav-link px-2">Registrarse</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container my-5">
+
+        <h2 class="display-6 fw-bold mb-4">Catálogo de Instrumentos</h2>
+
+   
+        <div class="row g-3 align-items-center mb-4">
+            <div class="col-12 col-md-8">
+                <form action="catalogo.html" method="GET" class="d-flex gap-2">
+                    <input type="search" id="buscar" name="q" class="form-control" placeholder="Modelo, marca o tipo...">
+                    <button type="submit" class="btn btn-custom px-4">Buscar</button>
+                </form>
+            </div>
+            <div class="col-12 col-md-4 text-md-end">
+                <button type="button" class="btn btn-custom w-100 w-md-auto" data-bs-toggle="collapse" data-bs-target="#panelFiltros">
+                    Filtrar resultados
+                </button>
+            </div>
+        </div>
+
+  
+        <div id="panelFiltros" class="collapse mb-4">
+            <div class="card p-4 category-card border-0 shadow-sm">
+                <form action="catalogo.html" method="GET">
+                    <div class="row g-4">
+                        
+                    
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <h3 class="h6 fw-bold mb-3">Categoría</h3>
+                            <div class="form-check mb-1">
+                                <input class="form-check-input" type="checkbox" id="cat_guitarras" name="categoria" value="guitarras">
+                                <label class="form-check-label" for="cat_guitarras">Guitarras</label>
+                            </div>
+                            <div class="form-check mb-1">
+                                <input class="form-check-input" type="checkbox" id="cat_bajos" name="categoria" value="bajos">
+                                <label class="form-check-label" for="cat_bajos">Bajos</label>
+                            </div>
+                            <div class="form-check mb-1">
+                                <input class="form-check-input" type="checkbox" id="cat_baterias" name="categoria" value="baterias">
+                                <label class="form-check-label" for="cat_baterias">Baterías y Percusión</label>
+                            </div>
+                            <div class="form-check mb-1">
+                                <input class="form-check-input" type="checkbox" id="cat_teclados" name="categoria" value="teclados">
+                                <label class="form-check-label" for="cat_teclados">Teclados y Pianos</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="cat_accesorios" name="categoria" value="accesorios">
+                                <label class="form-check-label" for="cat_accesorios">Accesorios</label>
+                            </div>
+                        </div>
+
+         
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <h3 class="h6 fw-bold mb-3">Rango de Precio</h3>
+                            <div class="mb-2">
+                                <label for="precio_min" class="form-label small">Mínimo:</label>
+                                <input type="number" class="form-control form-control-sm" id="precio_min" name="precio_min" min="0" placeholder="$0">
+                            </div>
+                            <div>
+                                <label for="precio_max" class="form-label small">Máximo:</label>
+                                <input type="number" class="form-control form-control-sm" id="precio_max" name="precio_max" min="0" placeholder="$1.000.000">
+                            </div>
+                        </div>
+
+        
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <h3 class="h6 fw-bold mb-3">Marca</h3>
+                            <div class="form-check mb-1">
+                                <input class="form-check-input" type="checkbox" id="marca_placeholder1" name="marca" value="placeholder1">
+                                <label class="form-check-label" for="marca_placeholder1">Chibson</label>
+                            </div>
+                            <div class="form-check mb-1">
+                                <input class="form-check-input" type="checkbox" id="marca_placeholder2" name="marca" value="placeholder2">
+                                <label class="form-check-label" for="marca_placeholder2">Fender</label>
+                            </div>
+                            <div class="form-check mb-1">
+                                <input class="form-check-input" type="checkbox" id="marca_placeholder3" name="marca" value="placeholder3">
+                                <label class="form-check-label" for="marca_placeholder3">Ibanez</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="marca_placeholder4" name="marca" value="placeholder4">
+                                <label class="form-check-label" for="marca_placeholder4">Yamaha</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <h3 class="h6 fw-bold mb-3">Disponibilidad</h3>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="solo_stock" name="stock" value="si">
+                                <label class="form-check-label" for="solo_stock">Solo con stock disponible</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+    
+                    <div class="d-flex gap-2 mt-4 pt-3 border-top border-secondary-subtle">
+                        <button type="submit" class="btn btn-custom btn-sm px-3">Aplicar filtros</button>
+                        <button type="reset" class="btn btn-outline-secondary btn-sm px-3">Limpiar filtros</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <section class="d-flex flex-wrap justify-content-between align-items-center gap-3 py-3 border-top border-bottom custom-divider">
+            <p class="m-0 fw-semibold">2 productos encontrados</p>
+            <div class="d-flex align-items-center gap-2">
+                <label for="ordenar" class="form-label m-0 small text-nowrap">Ordenar por:</label>
+                <select id="ordenar" name="ordenar" class="form-select form-select-sm w-auto">
+                    <option value="relevancia">Relevancia</option>
+                    <option value="precio_asc">Precio: menor a mayor</option>
+                    <option value="precio_desc">Precio: mayor a menor</option>
+                    <option value="recientes">Más recientes</option>
+                </select>
+            </div>
+        </section>
+
+
+        <section id="contenedor-productos" class="my-5">
+            <div class="row g-4">
+                
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="card h-100 product-card shadow-sm border-0 overflow-hidden">
+                        <a href="producto_detalle.html?id=guitarra" class="text-decoration-none">
+                            <img src="img/guitarra.png" alt="Guitarra Eléctrica Chibson" class="card-img-top p-3 bg-white" style="height: 240px; object-fit: contain;">
+                        </a>
+                        <div class="card-body d-flex flex-column p-4">
+                            <h3 class="h5 fw-bold mb-2">
+                                <a href="producto_detalle.html?id=guitarra" class="text-link">Guitarra Eléctrica Standard Custom</a>
+                            </h3>
+                            <p class="price-tag my-2">$749.990 CLP</p>
+                            <p class="small text-muted mb-4">Cuerpo de caoba maciza, tapa de arce y pastillas Vintage Alnico V.</p>
+                            <div class="mt-auto d-flex flex-column gap-2">
+                                <a href="producto_detalle.html?id=guitarra" class="btn btn-outline-dark w-100">Ver detalles</a>
+                                <button type="button" class="btn btn-custom w-100" data-bs-toggle="modal" data-bs-target="#loginModal" data-product-id="guitarra">
+                                    Comprar
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+      
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="card h-100 product-card shadow-sm border-0 overflow-hidden">
+                        <a href="producto_detalle.html?id=teclado" class="text-decoration-none">
+                            <img src="img/teclado.png" alt="Teclado Sintetizador Pro" class="card-img-top p-3 bg-white" style="height: 240px; object-fit: contain;">
+                        </a>
+                        <div class="card-body d-flex flex-column p-4">
+                            <h3 class="h5 fw-bold mb-2">
+                                <a href="producto_detalle.html?id=teclado" class="text-link">Teclado Sintetizador Pro 61 Teclas</a>
+                            </h3>
+                            <p class="price-tag my-2">$489.990 CLP</p>
+                            <p class="small text-muted mb-4">Teclas semicontrapesadas, motor de síntesis analógica y conectividad USB-MIDI.</p>
+                            <div class="mt-auto d-flex flex-column gap-2">
+                                <a href="producto_detalle.html?id=teclado" class="btn btn-outline-dark w-100">Ver detalles</a>
+                                <button type="button" class="btn btn-custom w-100" data-bs-toggle="modal" data-bs-target="#loginModal" data-product-id="teclado">
+                                    Comprar
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-bottom-0 pb-0">
+                    <h5 class="modal-title fw-bold" id="loginModalLabel">Iniciar sesión requerido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body py-4">
+                    <p class="mb-0">Para comprar este producto o agregarlo a tu carrito, necesitas tener una cuenta activa e iniciar sesión.</p>
+                </div>
+                <div class="modal-footer border-top-0 pt-0 d-flex flex-column flex-sm-row gap-2">
+                    <a id="modal-btn-login" href="login.html" class="btn btn-custom w-100 flex-grow-1">Iniciar Sesión</a>
+                    <a href="registro.html" class="btn btn-outline-dark w-100 flex-grow-1">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="border-top py-4 text-center text-muted small bg-white mt-5">
+        <p class="mb-0">&copy; 2026 Chibson Instruments. Todos los derechos reservados.</p>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const loginModal = document.getElementById('loginModal');
+        if (loginModal) {
+            loginModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const productId = button.getAttribute('data-product-id');
+                const modalLoginBtn = document.getElementById('modal-btn-login');
+                if (productId) {
+                    modalLoginBtn.href = `login.html?redirect=producto_detalle.html?id=${productId}`;
+                } else {
+                    modalLoginBtn.href = 'login.html';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

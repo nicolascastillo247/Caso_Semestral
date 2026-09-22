@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chibson Instruments</title>
+
+ 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link href="css/miestilo.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+    <header class="main-header border-bottom py-3">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <h1 class="h3 m-0 brand-title">Chibson Instruments</h1>
+            <nav aria-label="Navegación principal">
+                <ul class="nav">
+                    <li class="nav-item"><a href="index.html" class="nav-link px-2 active fw-bold">Inicio</a></li>
+                    <li class="nav-item"><a href="catalogo.html" class="nav-link px-2">Catálogo</a></li>
+                    <li class="nav-item"><a href="nosotros.html" class="nav-link px-2">Nosotros</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link px-2">Iniciar Sesión</a></li>
+                    <li class="nav-item"><a href="registro.html" class="nav-link px-2">Registrarse</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container my-5">
+
+    
+        <section class="text-center my-4">
+            <img src="img/logo.png" alt="Logo de Chibson Instruments" class="img-fluid logo-img">
+        </section>
+
+        <hr class="custom-divider my-5">
+
+    
+        <section class="row align-items-center g-4">
+            <div class="col-lg-6">
+                <h2 class="display-6 fw-bold">Encuentra tu próximo instrumento</h2>
+                <p class="lead">Explora nuestro catálogo con las mejores marcas, asesoría técnica y envíos a todo el país.</p>
+            </div>
+            <div class="col-lg-6">
+                <div class="card p-4 category-card shadow-sm border-0">
+                    <h3 class="h5 mb-3 fw-bold">Categorías Populares</h3>
+                    <ul class="list-unstyled mb-0 d-flex flex-column gap-2">
+                        <li><a href="catalogo.html?categoria=guitarras" class="category-link">→ Guitarras Eléctricas y Acústicas</a></li>
+                        <li><a href="catalogo.html?categoria=bajos" class="category-link">→ Bajos Eléctricos</a></li>
+                        <li><a href="catalogo.html?categoria=baterias" class="category-link">→ Baterías y Percusión</a></li>
+                        <li><a href="catalogo.html?categoria=teclados" class="category-link">→ Teclados y Sintetizadores</a></li>
+                        <li><a href="catalogo.html?categoria=accesorios" class="category-link">→ Amplificadores, Pedales y Accesorios</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="custom-divider my-5">
+
+   
+        <section>
+            <h3 class="fw-bold mb-4">Instrumentos Destacados</h3>
+            <div class="row g-4">
+                
+     
+                <div class="col-12 col-md-6">
+                    <article class="card h-100 product-card shadow-sm border-0 p-4">
+                        <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
+                            <div>
+                                <h4 class="h5 fw-bold m-0">
+                                    <a href="producto_detalle.html?id=guitarra" class="text-link">Guitarra Eléctrica Standard Custom</a>
+                                </h4>
+                                <p class="price-tag my-2">$749.990 CLP</p>
+                            </div>
+                            <a href="producto_detalle.html?id=guitarra" class="flex-shrink-0">
+                                <img src="img/guitarra.png" alt="Guitarra Eléctrica" class="card-icon-thumb shadow-sm">
+                            </a>
+                        </div>
+                        <p class="small text-muted mb-4">Cuerpo de caoba maciza, tapa de arce flameado y pastillas Vintage Alnico V.</p>
+                        <div class="mt-auto d-flex flex-column gap-2">
+                            <a href="producto_detalle.html?id=guitarra" class="btn btn-outline-dark w-100">Ver detalles</a>
+                            <button type="button" class="btn btn-custom w-100" data-bs-toggle="modal" data-bs-target="#loginModal" data-product-id="guitarra">
+                                Comprar
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+          
+                <div class="col-12 col-md-6">
+                    <article class="card h-100 product-card shadow-sm border-0 p-4">
+                        <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
+                            <div>
+                                <h4 class="h5 fw-bold m-0">
+                                    <a href="producto_detalle.html?id=teclado" class="text-link">Teclado Sintetizador Pro 61 Teclas</a>
+                                </h4>
+                                <p class="price-tag my-2">$489.990 CLP</p>
+                            </div>
+                            <a href="producto_detalle.html?id=teclado" class="flex-shrink-0">
+                                <img src="img/teclado.png" alt="Teclado Sintetizador" class="card-icon-thumb shadow-sm">
+                            </a>
+                        </div>
+                        <p class="small text-muted mb-4">Teclas semicontrapesadas, motor de síntesis analógica y conectividad USB-MIDI.</p>
+                        <div class="mt-auto d-flex flex-column gap-2">
+                            <a href="producto_detalle.html?id=teclado" class="btn btn-outline-dark w-100">Ver detalles</a>
+                            <button type="button" class="btn btn-custom w-100" data-bs-toggle="modal" data-bs-target="#loginModal" data-product-id="teclado">
+                                Comprar
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="custom-divider my-5">
+
+  
+        <section>
+            <h3 class="fw-bold mb-4">Últimas Noticias y Artículos</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <article class="card h-100 blog-card shadow-sm border-0 p-4">
+                        <div class="d-flex flex-column flex-sm-row gap-3 align-items-sm-center mb-3">
+                            <a href="noticia_detalle.html?id=1#noticia-1">
+                                <img src="img/logo.png" alt="Guía de mantenimiento de diapasón" class="img-fluid rounded blog-thumb">
+                            </a>
+                            <h4 class="h6 fw-bold m-0">Guía básica: Cómo cuidar el diapasón de tu guitarra en invierno</h4>
+                        </div>
+                        <p>Los cambios bruscos de temperatura y humedad pueden descalibrar tu instrumento. Descubre qué aceites usar y con qué frecuencia limpiar la madera.</p>
+                        <div class="mt-auto pt-2">
+                            <a href="noticia_detalle.html?id=1#noticia-1" class="text-link">Leer artículo completo →</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6">
+                    <article class="card h-100 blog-card shadow-sm border-0 p-4">
+                        <div class="d-flex flex-column flex-sm-row gap-3 align-items-sm-center mb-3">
+                            <a href="noticia_detalle.html?id=2#noticia-2">
+                                <img src="img/logo.png" alt="Nuevas cápsulas Alnico V disponibles" class="img-fluid rounded blog-thumb">
+                            </a>
+                            <h4 class="h6 fw-bold m-0">Llegan las nuevas cápsulas Vintage Alnico V a nuestro taller</h4>
+                        </div>
+                        <p>Incorporamos a nuestro catálogo la última línea de pastillas bobinadas a mano, ideales para mayor sustain, calidez y rango dinámico clásico.</p>
+                        <div class="mt-auto pt-2">
+                            <a href="noticia_detalle.html?id=2#noticia-2" class="text-link">Leer artículo completo →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <hr class="custom-divider my-5">
+
+    
+        <section class="contact-section p-4 rounded shadow-sm">
+            <h2 class="h4 fw-bold mb-3">Información de Contacto</h2>
+            <p>¿Tienes dudas o buscas asesoría personalizada sobre un instrumento? Contáctanos a través de nuestros canales oficiales:</p>
+            <ul class="list-unstyled mb-0 d-flex flex-column gap-2">
+                <li><strong>Correo electrónico:</strong> contacto@chibsoninstruments.com</li>
+                <li><strong>Teléfono / WhatsApp:</strong> +56 9 1234 5678</li>
+                <li><strong>Ubicación:</strong> Av. Principal 1234, Concepción, Chile</li>
+                <li><strong>Horario de atención:</strong> Lunes a Viernes de 10:00 a 19:00 hrs / Sábados de 10:00 a 14:00 hrs</li>
+            </ul>
+        </section>
+
+    </main>
+
+  
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-bottom-0 pb-0">
+                    <h5 class="modal-title fw-bold" id="loginModalLabel">Iniciar sesión requerido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body py-4">
+                    <p class="mb-0">Para comprar este producto o agregarlo a tu carrito, necesitas tener una cuenta activa e iniciar sesión.</p>
+                </div>
+                <div class="modal-footer border-top-0 pt-0 d-flex flex-column flex-sm-row gap-2">
+                    <a id="modal-btn-login" href="login.html" class="btn btn-custom w-100 flex-grow-1">Iniciar Sesión</a>
+                    <a href="registro.html" class="btn btn-outline-dark w-100 flex-grow-1">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+    <footer class="border-top py-4 text-center text-muted small bg-white mt-5">
+        <p class="mb-0">&copy; 2026 Chibson Instruments. Todos los derechos reservados.</p>
+    </footer>
+
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+        const loginModal = document.getElementById('loginModal');
+        if (loginModal) {
+            loginModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const productId = button.getAttribute('data-product-id');
+                const modalLoginBtn = document.getElementById('modal-btn-login');
+                if (productId) {
+                    modalLoginBtn.href = `login.html?redirect=producto_detalle.html?id=${productId}`;
+                } else {
+                    modalLoginBtn.href = 'login.html';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

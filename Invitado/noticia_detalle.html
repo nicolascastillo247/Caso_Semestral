@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artículo - Chibson Instruments</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/miestilo.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+    <header class="main-header border-bottom py-3">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <h1 class="h3 m-0 brand-title">Chibson Instruments</h1>
+            <nav aria-label="Navegación principal">
+                <ul class="nav">
+                    <li class="nav-item"><a href="index.html" class="nav-link px-2">Inicio</a></li>
+                    <li class="nav-item"><a href="catalogo.html" class="nav-link px-2">Catálogo</a></li>
+                    <li class="nav-item"><a href="nosotros.html" class="nav-link px-2">Nosotros</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link px-2">Iniciar Sesión</a></li>
+                    <li class="nav-item"><a href="registro.html" class="nav-link px-2">Registrarse</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container my-5">
+
+        <nav aria-label="Ruta de navegación" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html" class="text-link">Inicio</a></li>
+                <li class="breadcrumb-item active text-dark fw-semibold" aria-current="page" id="migaja-noticia">Artículo</li>
+            </ol>
+        </nav>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9">
+
+ 
+                <article class="card p-4 p-md-5 border-0 shadow-sm blog-card">
+                    
+                    <header class="mb-4 pb-3 border-bottom custom-divider">
+                        <div>
+                            <span id="noticia-categoria" class="badge text-bg-dark px-3 py-2 fs-6 mb-3">Categoría</span>
+                        </div>
+                        <h2 id="noticia-titulo" class="display-6 fw-bold my-2 text-black">Cargando artículo...</h2>
+                        <p class="text-dark small mt-2 mb-0">
+                            Publicado por <strong id="noticia-autor" class="text-black">Taller Chibson</strong> 
+                            <span class="mx-1">|</span> 
+                            <span id="noticia-fecha" class="text-black">Fecha</span>
+                        </p>
+                    </header>
+
+        
+                    <figure class="figure my-3 text-center w-100">
+                        <img id="noticia-img" src="img/logo.png" alt="Imagen del artículo" class="img-fluid rounded shadow-sm border" style="max-height: 380px; width: auto; object-fit: cover;">
+                        <figcaption id="noticia-caption" class="figure-caption mt-2 text-dark fw-medium">Pie de foto</figcaption>
+                    </figure>
+
+        
+                    <section id="noticia-cuerpo" class="my-4 lh-lg text-black">
+           
+                    </section>
+
+    
+                    <footer class="pt-4 mt-4 border-top custom-divider d-flex flex-wrap justify-content-between align-items-center gap-3">
+                        <a href="index.html" class="btn btn-outline-dark px-4 fw-semibold">← Volver al Inicio</a>
+                        <a id="noticia-siguiente" href="noticia_detalle.html?id=2" class="btn btn-custom px-4 fw-bold">Ver siguiente noticia →</a>
+                    </footer>
+
+                </article>
+
+            </div>
+        </div>
+
+    </main>
+
+
+    <footer class="border-top py-4 text-center text-dark small bg-white mt-5">
+        <p class="mb-1 fw-semibold">Chibson Instruments — Pasión por la música y el sonido profesional.</p>
+        <p class="mb-0 text-secondary">&copy; 2026 Chibson Instruments. Todos los derechos reservados.</p>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  
+    <script>
+        const noticiasDatos = {
+            "1": {
+                titulo: "Guía básica: Cómo cuidar el diapasón de tu guitarra en invierno",
+                autor: "Taller Luthier Chibson",
+                fecha: "14 de Mayo de 2026",
+                categoria: "Mantenimiento",
+                imagen: "img/logo.png",
+                caption: "Aplicación de aceite de limón en maderas no barnizadas.",
+                siguienteId: "2",
+                siguienteTexto: "Ver: Nuevas cápsulas Vintage Alnico V →",
+                contenido: `
+                    <h3 class="h4 fw-bold mt-4 mb-3 text-black">El impacto del clima en la madera</h3>
+                    <p class="text-black">Durante las estaciones frías, la humedad relativa desciende drásticamente en ambientes cerrados o con calefacción constante. Esto provoca que las maderas no laqueadas, como el palo de rosa (rosewood) o el ébano, pierdan humedad natural, contrayéndose y provocando el temido desajuste de trastes filosos en los bordes del mástil.</p>
+                    
+                    <h3 class="h4 fw-bold mt-4 mb-3 text-black">Pasos clave para la mantención</h3>
+                    <ol class="d-flex flex-column gap-3 mb-4 text-black">
+                        <li><strong class="text-black">Limpieza superficial:</strong> Retira las cuerdas viejas y limpia la suciedad acumulada junto a los trastes usando un paño de microfibra seco o lana de acero grado 0000 con suavidad.</li>
+                        <li><strong class="text-black">Nutrición controlada:</strong> Aplica unas pocas gotas de aceite de limón o aceite mineral en el diapasón. Deja actuar un par de minutos y remueve todo el excedente con otro paño limpio. Nunca dejes exceso de aceite, ya que puede ablandar la madera bajo los trastes.</li>
+                        <li><strong class="text-black">Control de ambiente:</strong> Procura guardar tu instrumento en su funda o estuche rígido cuando no lo uses, evitando apoyarlo cerca de estufas o corrientes directas de aire frío.</li>
+                    </ol>
+                `
+            },
+            "2": {
+                titulo: "Llegan las nuevas cápsulas Vintage Alnico V a nuestro taller",
+                autor: "Equipo Técnico Chibson",
+                fecha: "2 de Junio de 2026",
+                categoria: "Electrónica y Repuestos",
+                imagen: "img/logo.png",
+                caption: "Pastillas bobinadas a mano con componentes vintage seleccionados.",
+                siguienteId: "1",
+                siguienteTexto: "Ver: Cuidado del diapasón en invierno →",
+                contenido: `
+                    <h3 class="h4 fw-bold mt-4 mb-3 text-black">Tono clásico y respuesta dinámica</h3>
+                    <p class="text-black">Nos complace anunciar la incorporación de nuestra nueva línea de micrófonos bobinados con imanes Alnico V seleccionados. Estas pastillas ofrecen un equilibrio balanceado entre agudos definidos y graves articulados, con una salida moderada ideal para guitarras tipo Les Paul, SG y modelos semihuecos.</p>
+                    
+                    <h3 class="h4 fw-bold mt-4 mb-3 text-black">Especificaciones de la línea Alnico V</h3>
+                    <ul class="d-flex flex-column gap-3 mb-4 text-black">
+                        <li><strong class="text-black">Pastilla de Mástil (Neck):</strong> 7.8k Ohms — Tono cremoso, amplio rango dinámico y definición en limpios.</li>
+                        <li><strong class="text-black">Pastilla de Puente (Bridge):</strong> 8.4k Ohms — Ataque claro y un crujido armónico ideal para saturaciones de amplificador a tubos.</li>
+                        <li><strong class="text-black">Construcción:</strong> Hilo de cobre esmaltado plano, base de alpaca niquelada y cableado trenzado estilo años 50 con malla metálica.</li>
+                    </ul>
+                    <p class="text-black">Las unidades ya están disponibles para instalación directa en nuestro taller central o para envío mediante nuestro catálogo oficial de accesorios.</p>
+                `
+            }
+        };
+
+        const parametros = new URLSearchParams(window.location.search);
+        const noticiaId = parametros.get('id') || '1';
+
+        if (noticiasDatos[noticiaId]) {
+            const art = noticiasDatos[noticiaId];
+
+            document.title = `${art.titulo} - Chibson Instruments`;
+            document.getElementById('migaja-noticia').textContent = art.titulo;
+            document.getElementById('noticia-titulo').textContent = art.titulo;
+            document.getElementById('noticia-autor').textContent = art.autor;
+            document.getElementById('noticia-fecha').textContent = art.fecha;
+            document.getElementById('noticia-categoria').textContent = art.categoria;
+
+            const imgEl = document.getElementById('noticia-img');
+            imgEl.src = art.imagen;
+            imgEl.alt = art.titulo;
+            document.getElementById('noticia-caption').textContent = art.caption;
+
+            document.getElementById('noticia-cuerpo').innerHTML = art.contenido;
+
+            const btnSiguiente = document.getElementById('noticia-siguiente');
+            btnSiguiente.href = `noticia_detalle.html?id=${art.siguienteId}`;
+            btnSiguiente.textContent = art.siguienteTexto;
+        }
+    </script>
+</body>
+
+</html>
