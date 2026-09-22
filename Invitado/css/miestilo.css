@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6, .brand-title {
 }
 
 .logo-img {
-    max-width: 320px;
+    max-width: 240px;
     height: auto;
 }
 
@@ -98,8 +98,8 @@ h1, h2, h3, h4, h5, h6, .brand-title {
 }
 
 .blog-thumb {
-    width: 90px;
-    height: 70px;
+    width: 150px;
+    height: 130px;
     object-fit: cover;
     border: 1px solid var(--color-slate);
 }
@@ -130,52 +130,76 @@ h1, h2, h3, h4, h5, h6, .brand-title {
     padding: 4px;
 }
 
+/* ==========================================================================
+   CARRUSEL DE NOTICIAS COMPACTO (REDUCCIÓN DE TAMAÑO)
+   ========================================================================== */
 
-#noticia-titulo, 
-article h2, 
-article h3 {
-    color: var(--color-dark) !important;
-    opacity: 1 !important;
+/* Contenedor: Limita el ancho del carrusel */
+.news-carousel-container {
+    max-width: 750px !important;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-
-.noticia-meta {
-    color: #4a4a4a !important;
-    font-size: 0.9rem;
+/* Control estricto de la altura de la imagen */
+#topHeroNewsCarousel .carousel-inner img,
+#topHeroNewsCarousel .hero-carousel-img {
+    height: 600px !important;
+    max-height: 600px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    filter: brightness(0.65);
 }
 
-
-.badge-categoria {
-    background-color: var(--color-dark);
-    color: #ffffff;
-    font-weight: 600;
-    padding: 6px 12px;
-    letter-spacing: 0.5px;
+/* Textos sobre la imagen adaptados al tamaño pequeño */
+#topHeroNewsCarousel .carousel-caption {
+    bottom: 0.25rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-bottom: 0.5rem !important;
 }
 
-
-.btn-custom,
-a.btn-custom,
-a.btn-custom:visited {
-    color: var(--color-dark) !important;
-    font-weight: 600 !important;
-    border: 1px solid #cfa356 !important;
+#topHeroNewsCarousel .carousel-caption h3 {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.2rem !important;
+    line-height: 1.2;
 }
 
-.btn-custom:hover,
-a.btn-custom:hover {
-    background-color: #deb160 !important;
-    color: var(--color-dark) !important;
+#topHeroNewsCarousel .carousel-caption p {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.4rem !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.btn-outline-custom {
-    color: var(--color-dark) !important;
-    border: 1.5px solid var(--color-dark) !important;
-    font-weight: 600;
-    background-color: transparent;
+#topHeroNewsCarousel .carousel-caption .badge {
+    font-size: 0.65rem !important;
+    padding: 0.2em 0.5em !important;
 }
 
-.btn-outline-custom:hover {
-    background-color: var(--color-dark);
-    color: #ffffff !important;
+#topHeroNewsCarousel .carousel-caption .btn-sm {
+    padding: 0.15rem 0.5rem !important;
+    font-size: 0.7rem !important;
+}
+
+/* Para pantallas móviles */
+@media (max-width: 576px) {
+    .news-carousel-container {
+        max-width: 100% !important;
+    }
+    
+    #topHeroNewsCarousel .carousel-inner img,
+    #topHeroNewsCarousel .hero-carousel-img {
+        height: 140px !important;
+        max-height: 140px !important;
+    }
+
+    #topHeroNewsCarousel .carousel-caption p {
+        display: none !important;
+    }
 }
