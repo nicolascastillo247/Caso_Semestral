@@ -1,0 +1,28 @@
+/* Tipografia */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Tablas con columnas de ancho fijo, ideal para columnas de acciones/botones */
+table.table-actions {
+    table-layout: fixed;
+    width: 100%;
+}
+
+table.table-actions th,
+table.table-actions td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Botones dentro de celdas de acciones, con espacio entre ellos */
+table.table-actions th button,
+table.table-actions td button {
+    margin-right: 4px;
+}
+
+table.table-actions th button:last-child,
+table.table-actions td button:last-child {
+    margin-right: 0;
+}
