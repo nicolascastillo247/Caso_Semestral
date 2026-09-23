@@ -15,72 +15,81 @@
 
 <body>
 
-    <!-- Modal Exportar a Excel -->
-    <div class="modal fade" id="exportExcelModal" tabindex="-1" aria-labelledby="exportExcelModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+    <!-- Modal Exportar a PDF -->
+    <div class="modal fade" id="exportPdfModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title" id="exportExcelModalLabel">
-                        <i class="bi bi-file-earmark-excel me-2"></i>Exportar a Excel
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-file-earmark-pdf-fill text-danger me-2"></i>Exportar a PDF
                     </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Cerrar"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="excelExportForm">
+                    <form id="exportPdfForm">
+                        <!-- Selección de registros -->
                         <div class="mb-3">
-                            <label class="form-label fw-semibold">Rango de datos</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="excelScope" id="excelAll" value="all"
-                                    checked>
-                                <label class="form-check-label" for="excelAll">Todos los usuarios</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="excelScope" id="excelFiltered"
-                                    value="filtered">
-                                <label class="form-check-label" for="excelFiltered">Solo resultados filtrados
-                                    actualmente</label>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Formato de archivo</label>
-                            <select class="form-select">
-                                <option value="xlsx" selected>Libro de Excel (.xlsx)</option>
-                                <option value="csv">Valores separados por comas (.csv)</option>
+                            <label class="form-label fw-bold">Registros a incluir</label>
+                            <select class="form-select" name="pdf_scope">
+                                <option value="all" selected>Todos los registros</option>
+                                <option value="filtered">Solo los registros filtrados en la tabla</option>
+                                <option value="selected">Solo seleccionados</option>
                             </select>
                         </div>
 
-                        <div class="mb-2">
-                            <label class="form-label fw-semibold">Columnas a incluir</label>
+                        <!-- Configuración del PDF -->
+                        <div class="row g-2 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Orientación</label>
+                                <select class="form-select" name="pdf_orientation">
+                                    <option value="landscape" selected>Horizontal (Paisaje)</option>
+                                    <option value="portrait">Vertical (Retrato)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Tamaño de página</label>
+                                <select class="form-select" name="pdf_page_size">
+                                    <option value="A4" selected>A4</option>
+                                    <option value="Letter">Carta (Letter)</option>
+                                    <option value="Legal">Oficio (Legal)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Columnas a exportar -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Columnas a incluir</label>
                             <div class="row g-2">
                                 <div class="col-6">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="colId" checked disabled>
-                                        <label class="form-check-label" for="colId">ID</label>
+                                        <input class="form-check-input" type="checkbox" id="pdfColId" checked disabled>
+                                        <label class="form-check-label" for="pdfColId">ID</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="colNombre" checked>
-                                        <label class="form-check-label" for="colNombre">Nombre</label>
+                                        <input class="form-check-input" type="checkbox" id="pdfColNombre" checked>
+                                        <label class="form-check-label" for="pdfColNombre">Nombre Completo</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="colRol" checked>
-                                        <label class="form-check-label" for="colRol">Rol</label>
+                                        <input class="form-check-input" type="checkbox" id="pdfColUsername" checked>
+                                        <label class="form-check-label" for="pdfColUsername">Nombre Usuario</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="pdfColRol" checked>
+                                        <label class="form-check-label" for="pdfColRol">Rol</label>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="colCorreo" checked>
-                                        <label class="form-check-label" for="colCorreo">Correo</label>
+                                        <input class="form-check-input" type="checkbox" id="pdfColCorreo" checked>
+                                        <label class="form-check-label" for="pdfColCorreo">Correo</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="colTelefono" checked>
-                                        <label class="form-check-label" for="colTelefono">Teléfono</label>
+                                        <input class="form-check-input" type="checkbox" id="pdfColTelefono" checked>
+                                        <label class="form-check-label" for="pdfColTelefono">Teléfono</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="colEstado" checked>
-                                        <label class="form-check-label" for="colEstado">Estado</label>
+                                        <input class="form-check-input" type="checkbox" id="pdfColEstado" checked>
+                                        <label class="form-check-label" for="pdfColEstado">Estado</label>
                                     </div>
                                 </div>
                             </div>
@@ -88,79 +97,112 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success">
-                        <i class="bi bi-download me-1"></i>Descargar Excel
+                    <button type="submit" form="exportPdfForm" class="btn btn-danger">
+                        <i class="bi bi-file-earmark-pdf me-1"></i> Exportar PDF
                     </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Exportar a PDF -->
-    <div class="modal fade" id="exportPdfModal" tabindex="-1" aria-labelledby="exportPdfModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+
+    <!-- Modal Exportar a Excel -->
+    <div class="modal fade" id="exportExcelModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header bg-danger text-white">
-                    <h5 class="modal-title" id="exportPdfModalLabel">
-                        <i class="bi bi-file-earmark-pdf me-2"></i>Exportar a PDF
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-file-earmark-excel-fill text-success me-2"></i>Exportar a Excel
                     </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Cerrar"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="pdfExportForm">
+                    <form id="exportExcelForm">
+                        <!-- Nombre del archivo -->
                         <div class="mb-3">
-                            <label class="form-label fw-semibold">Rango de datos</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="pdfScope" id="pdfAll" value="all"
-                                    checked>
-                                <label class="form-check-label" for="pdfAll">Todos los usuarios</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="pdfScope" id="pdfFiltered"
-                                    value="filtered">
-                                <label class="form-check-label" for="pdfFiltered">Solo resultados filtrados
-                                    actualmente</label>
+                            <label class="form-label fw-bold">Nombre del archivo</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="excel_filename" value="reporte_usuarios"
+                                    required>
+                                <span class="input-group-text">.xlsx</span>
                             </div>
                         </div>
 
-                        <div class="row g-2 mb-3">
-                            <div class="col-6">
-                                <label class="form-label fw-semibold">Orientación</label>
-                                <select class="form-select">
-                                    <option value="portrait" selected>Vertical</option>
-                                    <option value="landscape">Horizontal</option>
-                                </select>
+                        <!-- Selección de registros -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Registros a exportar</label>
+                            <select class="form-select" name="excel_scope">
+                                <option value="all" selected>Todos los registros</option>
+                                <option value="filtered">Solo los registros filtrados en la tabla</option>
+                                <option value="selected">Solo seleccionados</option>
+                            </select>
+                        </div>
+
+                        <!-- Opciones de formato -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Opciones adicionales</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="excelHeaders" checked>
+                                <label class="form-check-label" for="excelHeaders">Incluir encabezados de
+                                    columna</label>
                             </div>
-                            <div class="col-6">
-                                <label class="form-label fw-semibold">Tamaño de página</label>
-                                <select class="form-select">
-                                    <option value="A4" selected>A4</option>
-                                    <option value="letter">Carta (Letter)</option>
-                                </select>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="excelStyles" checked>
+                                <label class="form-check-label" for="excelStyles">Aplicar formato de tabla (colores y
+                                    bordes)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="excelAutofit" checked>
+                                <label class="form-check-label" for="excelAutofit">Autoajustar ancho de columnas</label>
                             </div>
                         </div>
 
-                        <div class="mb-2">
-                            <label class="form-label fw-semibold">Opciones del documento</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="pdfHeader" checked>
-                                <label class="form-check-label" for="pdfHeader">Incluir logo y membrete</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="pdfPageNumbers" checked>
-                                <label class="form-check-label" for="pdfPageNumbers">Incluir numeración de
-                                    página</label>
+                        <!-- Columnas a incluir -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Columnas a incluir</label>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="exColId" checked disabled>
+                                        <label class="form-check-label" for="exColId">ID</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="exColNombre" checked>
+                                        <label class="form-check-label" for="exColNombre">Nombre Completo</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="exColUsername" checked>
+                                        <label class="form-check-label" for="exColUsername">Nombre Usuario</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="exColRol" checked>
+                                        <label class="form-check-label" for="exColRol">Rol</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="exColCorreo" checked>
+                                        <label class="form-check-label" for="exColCorreo">Correo</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="exColTelefono" checked>
+                                        <label class="form-check-label" for="exColTelefono">Teléfono</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="exColEstado" checked>
+                                        <label class="form-check-label" for="exColEstado">Estado</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-danger">
-                        <i class="bi bi-file-earmark-arrow-down me-1"></i>Generar PDF
+                    <button type="submit" form="exportExcelForm" class="btn btn-success">
+                        <i class="bi bi-file-earmark-excel me-1"></i> Exportar Excel
                     </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -304,79 +346,83 @@
         </div>
     </div>
 
-<!-- Modal Agregar Usuario -->
-<div class="modal fade" id="addUserModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Agregar Usuario</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form class="was-validated">
-                    <!-- Fila 1: Nombres y Apellidos -->
-                    <div class="row g-2">
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+    <!-- Modal Agregar Usuario -->
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="was-validated">
+                        <!-- Fila 1: Nombres y Apellidos -->
+                        <div class="row g-2">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="Primer apellido"
+                                    name="primer_apellido" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="Segundo apellido"
+                                    name="segundo_apellido" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Primer apellido" name="primer_apellido" required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
-                        </div>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Segundo apellido" name="segundo_apellido" required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
-                        </div>
-                    </div>
 
-                    <!-- Fila 2: Nombre de Usuario y Rol -->
-                    <div class="row g-2 mt-2">
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Nombre usuario" name="username" required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+                        <!-- Fila 2: Nombre de Usuario y Rol -->
+                        <div class="row g-2 mt-2">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Nombre usuario" name="username"
+                                    required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-select" required>
+                                    <option value="">Seleccionar rol</option>
+                                    <option>Administrador</option>
+                                    <option>Vendedor</option>
+                                    <option>Cliente</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <select class="form-select" required>
-                                <option value="">Seleccionar rol</option>
-                                <option>Administrador</option>
-                                <option>Vendedor</option>
-                                <option>Cliente</option>
-                            </select>
-                        </div>
-                    </div>
 
-                    <!-- Fila 3: Correo, Teléfono y Cámara -->
-                    <div class="row g-2 mt-2">
-                        <div class="col-md-5">
-                            <input type="email" class="form-control" placeholder="Correo" name="email" required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+                        <!-- Fila 3: Correo, Teléfono y Cámara -->
+                        <div class="row g-2 mt-2">
+                            <div class="col-md-5">
+                                <input type="email" class="form-control" placeholder="Correo" name="email" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="col-md-5">
+                                <input type="number" class="form-control" placeholder="Teléfono" name="telefono"
+                                    required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-primary w-100" title="Tomar foto">
+                                    <i class="bi bi-camera"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div class="col-md-5">
-                            <input type="number" class="form-control" placeholder="Teléfono" name="telefono" required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-primary w-100" title="Tomar foto">
-                                <i class="bi bi-camera"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <!-- Modal Desactivar -->
     <div class="modal fade" id="deactUserModal" tabindex="-1" aria-hidden="true">
@@ -416,24 +462,38 @@
         </div>
     </div>
 
-    <!-- Modal Modificar -->
+    <!-- Modal Modificar Usuario -->
     <div class="modal fade" id="putUserModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Modificar Usuario</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    <h5 class="modal-title">Modificar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="was-validated">
+                    <form>
+                        <!-- Fila 1: Nombres y Apellidos -->
                         <div class="row g-2">
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Please fill out this field.</div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="Nombre" name="nombre">
                             </div>
-                            <div class="col">
-                                <select class="form-select" name="rol" required>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="Primer apellido"
+                                    name="primer_apellido">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="Segundo apellido"
+                                    name="segundo_apellido">
+                            </div>
+                        </div>
+
+                        <!-- Fila 2: Nombre de Usuario y Rol -->
+                        <div class="row g-2 mt-2">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Nombre usuario" name="username">
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-select">
                                     <option>Administrador</option>
                                     <option>Vendedor</option>
                                     <option>Cliente</option>
@@ -441,26 +501,20 @@
                             </div>
                         </div>
 
+                        <!-- Fila 3: Correo y Teléfono -->
                         <div class="row g-2 mt-2">
-                            <div class="col">
-                                <input type="email" class="form-control" placeholder="Correo" name="email" required>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Correo" name="email">
                             </div>
-                            <div class="col">
-                                <input type="tel" class="form-control" placeholder="Teléfono" name="telefono" required>
-                            </div>
-                        </div>
-
-                        <div class="row mt-3">
-                            <div class="col">
-                                <label class="form-label">Descripción</label>
-                                <textarea class="form-control" rows="4" name="descripcion"></textarea>
+                            <div class="col-md-6">
+                                <input type="number" class="form-control" placeholder="Teléfono" name="telefono">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Guardar cambios</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -515,12 +569,13 @@
             <table class="table table-striped align-middle">
                 <thead>
                     <tr>
-                        <th style="width:9%;">ID</th>
-                        <th style="width:18%;">Nombre</th>
-                        <th style="width:13%;">Rol</th>
-                        <th style="width:20%;">Correo</th>
-                        <th style="width:12%;">Teléfono</th>
-                        <th style="width:18%;">Estado</th>
+                        <th style="width:8%;">ID</th>
+                        <th style="width:15%;">Nombre</th>
+                        <th style="width:12%;">Nombre Usuario</th>
+                        <th style="width:11%;">Rol</th>
+                        <th style="width:17%;">Correo</th>
+                        <th style="width:10%;">Teléfono</th>
+                        <th style="width:17%;">Estado</th>
                         <th style="width:10%;" class="text-end">Acciones</th>
                     </tr>
                 </thead>
@@ -528,6 +583,7 @@
                     <tr>
                         <td>123gfd</td>
                         <td>Juan Perez</td>
+                        <td>jperez</td>
                         <td>Vendedor</td>
                         <td>juan@mail.com</td>
                         <td>2000000</td>
@@ -557,6 +613,7 @@
                     <tr>
                         <td>456abc</td>
                         <td>Maria Gonzalez</td>
+                        <td>mgonzalez</td>
                         <td>Administrador</td>
                         <td>maria@mail.com</td>
                         <td>912345678</td>
@@ -586,6 +643,7 @@
                     <tr>
                         <td>789xyz</td>
                         <td>Pedro Soto</td>
+                        <td>psoto</td>
                         <td>Cliente</td>
                         <td>pedro@mail.com</td>
                         <td>987654321</td>
@@ -612,11 +670,56 @@
                         </td>
                     </tr>
                     <!-- Filas de espacio, igual que el template -->
-                     <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
