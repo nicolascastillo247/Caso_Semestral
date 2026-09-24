@@ -161,11 +161,12 @@
             <thead>
                 <tr>
                     <th style="width: 9%;">SKU</th>
-                    <th style="width: 27%;">Modelo</th>
-                    <th style="width: 12%;">Categoria</th>
+                    <th style="width: 18%;">Modelo</th>
+                    <th style="width: 11%;">Categoria</th>
                     <th style="width: 10%;">Precio</th>
                     <th style="width: 5%;">Stock</th>
                     <th style="width: 13%;">Ficha Tecnica</th>
+                    <th style="width: 10%;">Calificación</th>
                     <th style="width: 15%;">Estado</th>
                     <th style="width: 9%;"></th>
                 </tr>
@@ -184,6 +185,14 @@
                             data-bs-target="#addFichaModal-1"><i class="bi bi-plus"></i></button>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#edFichaModal-1"><i class="bi bi-pencil"></i></button>
+                    </td>
+                    <td class="text-nowrap">
+                        <i class="bi bi-star-fill text-warning"></i> 4.5
+                        <span class="text-secondary small">(12)</span>
+                        <button type="button" class="btn btn-sm btn-primary ms-1" title="Ver reseñas"
+                            data-bs-toggle="modal" data-bs-target="#resenasModal-1">
+                            <i class="bi bi-chat-square-text"></i>
+                        </button>
                     </td>
                     <td>
                         Desactivado
@@ -206,29 +215,11 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -246,15 +237,6 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                     <td></td>
                 </tr>
                 <tr>
@@ -266,6 +248,18 @@
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
@@ -276,9 +270,33 @@
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -515,6 +533,72 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary">Submit</button>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Reseñas del Producto -->
+    <div class="modal fade" id="resenasModal-1" tabindex="-1" aria-labelledby="resenasModalLabel-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resenasModalLabel-1">Reseñas — Flying V</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="fs-2 fw-bold">4.5</div>
+                        <div>
+                            <div class="text-warning">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-half"></i>
+                            </div>
+                            <div class="text-secondary small">Basado en 12 reseñas aprobadas</div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th style="width:22%;">Cliente</th>
+                                    <th style="width:18%;">Calificación</th>
+                                    <th>Comentario</th>
+                                    <th style="width:15%;">Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Maria Gonzalez</td>
+                                    <td class="text-warning text-nowrap">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i>
+                                    </td>
+                                    <td>Increíble guitarra, la recomiendo.</td>
+                                    <td>14-08-2026</td>
+                                </tr>
+                                <tr>
+                                    <td>Juan Perez</td>
+                                    <td class="text-warning text-nowrap">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star"></i>
+                                    </td>
+                                    <td>Excelente sonido y muy buena terminación.</td>
+                                    <td>12-08-2026</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="Resenas.html?sku=123gfd" class="btn btn-primary">
+                        <i class="bi bi-box-arrow-up-right me-1"></i>Ver todas y moderar
+                    </a>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
