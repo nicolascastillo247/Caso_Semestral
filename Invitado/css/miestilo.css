@@ -203,3 +203,80 @@ h1, h2, h3, h4, h5, h6, .brand-title {
         display: none !important;
     }
 }
+
+.news-img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.news-img:hover {
+    transform: scale(1.02);
+}
+
+.news-date {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.news-title {
+    font-size: 1.15rem;
+    line-height: 1.35;
+}
+
+.news-title a {
+    color: #212529;
+    text-decoration: none;
+}
+
+.news-title a:hover {
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+.news-excerpt {
+    font-size: 0.9rem;
+    color: #495057;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.pagination .page-link {
+    color: #0D0D0D;
+    background-color: #FFFFFF;
+    border-color: #87898C;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover sobre los enlaces */
+.pagination .page-link:hover {
+    color: #0D0D0D;
+    background-color: #F2EFBD;
+    border-color: #F2CA80;
+}
+
+/* Enfoque al hacer clic */
+.pagination .page-link:focus {
+    box-shadow: 0 0 0 0.25rem rgba(242, 202, 128, 0.4);
+}
+
+/* Botón de la página activa */
+.pagination .page-item.active .page-link {
+    color: #0D0D0D;
+    background-color: #F2CA80;
+    border-color: #F2CA80;
+    font-weight: 600;
+}
+
+/* Botones deshabilitados (Anterior / Siguiente en los extremos) */
+.pagination .page-item.disabled .page-link {
+    color: #87898C;
+    background-color: #F2F2F0;
+    border-color: #87898C;
+    opacity: 0.65;
+}

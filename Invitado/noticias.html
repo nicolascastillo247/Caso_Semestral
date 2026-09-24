@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias y Artículos - Chibson Instruments</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/miestilo.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="main-header border-bottom py-3">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <h1 class="h3 m-0 brand-title">Chibson Instruments</h1>
+            <nav aria-label="Navegación principal">
+                <ul class="nav">
+                    <li class="nav-item"><a href="index.html" class="nav-link px-2">Inicio</a></li>
+                    <li class="nav-item"><a href="catalogo.html" class="nav-link px-2">Catálogo</a></li>
+                    <li class="nav-item"><a href="noticias.html" class="nav-link px-2 active fw-bold">Noticias</a></li>
+                    <li class="nav-item"><a href="nosotros.html" class="nav-link px-2">Nosotros</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link px-2">Iniciar Sesión</a></li>
+                    <li class="nav-item"><a href="registro.html" class="nav-link px-2">Registrarse</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        
+        <div class="d-flex flex-wrap justify-content-between align-items-center pb-3 mb-4 border-bottom">
+            <h2 class="display-6 fw-bold m-0">Noticias y Novedades</h2>
+            
+            <div class="d-flex align-items-center gap-3 mt-3 mt-sm-0 text-muted small">
+                <div class="d-flex align-items-center gap-2">
+                    <label for="select-posts-pagina" class="m-0">Post por página</label>
+                    <select id="select-posts-pagina" class="form-select form-select-sm w-auto">
+                        <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="6" selected>6</option>
+                    </select>
+                </div>
+                <span id="conteo-noticias">1–6 de 6</span>
+            </div>
+        </div>
+
+        <div class="row g-4" id="contenedor-noticias">
+
+            <div class="col-12 col-md-6">
+                <article class="h-100 d-flex flex-column">
+                    <a href="noticia_detalle.html?id=1#noticia-1">
+                        <img src="img/diapason2.jpg" alt="Mantenimiento de diapasón" class="news-img mb-3 bg-light">
+                    </a>
+                    <span class="news-date mb-1">14 de mayo de 2026</span>
+                    <h3 class="news-title fw-bold mb-2">
+                        <a href="noticia_detalle.html?id=1#noticia-1">Guía básica: Cómo cuidar el diapasón de tu guitarra en invierno</a>
+                    </h3>
+                    <p class="news-excerpt mb-0">Los cambios bruscos de temperatura y humedad pueden descalibrar tu instrumento. Descubre qué aceites usar y con qué frecuencia limpiar la madera para mantener un tono óptimo.</p>
+                </article>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <article class="h-100 d-flex flex-column">
+                    <a href="noticia_detalle.html?id=2#noticia-2">
+                        <img src="img/noticia2.jpg" alt="Nuevas cápsulas Alnico V" class="news-img mb-3 bg-light">
+                    </a>
+                    <span class="news-date mb-1">2 de junio de 2026</span>
+                    <h3 class="news-title fw-bold mb-2">
+                        <a href="noticia_detalle.html?id=2#noticia-2">Llegan las nuevas cápsulas Vintage Alnico V a nuestro taller</a>
+                    </h3>
+                    <p class="news-excerpt mb-0">Incorporamos a nuestro catálogo la última línea de pastillas bobinadas a mano, ideales para quienes buscan mayor sustain, calidez y respuesta dinámica clásica en guitarras eléctricas.</p>
+                </article>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <article class="h-100 d-flex flex-column">
+                    <a href="noticia_detalle.html">
+                        <img src="img/logo.png" alt="Micrófonos de condensador para home studio" class="news-img mb-3 bg-light">
+                    </a>
+                    <span class="news-date mb-1">15 de julio de 2026</span>
+                    <h3 class="news-title fw-bold mb-2">
+                        <a href="noticia_detalle.html">Micrófonos de condensador: cómo elegir el ideal para tu voz o instrumento</a>
+                    </h3>
+                    <p class="news-excerpt mb-0">Hay micrófonos pensados para la resistencia del escenario y otros diseñados para la intimidad acústica del estudio. Analizamos diafragmas, patrones polares y preamplificación recomendada.</p>
+                </article>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <article class="h-100 d-flex flex-column">
+                    <a href="noticia_detalle.html">
+                        <img src="img/logo.png" alt="Temporada de descuentos y ofertas de invierno" class="news-img mb-3 bg-light">
+                    </a>
+                    <span class="news-date mb-1">28 de julio de 2026</span>
+                    <h3 class="news-title fw-bold mb-2">
+                        <a href="noticia_detalle.html">Especial de Invierno Chibson: equipamiento clave para comenzar a grabar</a>
+                    </h3>
+                    <p class="news-excerpt mb-0">Revisa nuestras recomendaciones de interfaces de audio USB, cables balanceados y monitores de campo cercano con descuentos especiales durante todo este mes.</p>
+                </article>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <article class="h-100 d-flex flex-column">
+                    <a href="noticia_detalle.html">
+                        <img src="img/logo.png" alt="Accesorios para sintetizadores y teclados" class="news-img mb-3 bg-light">
+                    </a>
+                    <span class="news-date mb-1">12 de agosto de 2026</span>
+                    <h3 class="news-title fw-bold mb-2">
+                        <a href="noticia_detalle.html">Accesorios esenciales para sintetizadores y teclados: completa tu setup</a>
+                    </h3>
+                    <p class="news-excerpt mb-0">Pedales de sustain universales, soportes tipo tijera de doble refuerzo y fundas acolchadas térmicas para que transportes tu teclado sin preocupaciones.</p>
+                </article>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <article class="h-100 d-flex flex-column">
+                    <a href="noticia_detalle.html">
+                        <img src="img/logo.png" alt="Ajuste y calibración de instrumentos" class="news-img mb-3 bg-light">
+                    </a>
+                    <span class="news-date mb-1">2 de septiembre de 2026</span>
+                    <h3 class="news-title fw-bold mb-2">
+                        <a href="noticia_detalle.html">Servicio de luthería: pasos indispensables en la calibración de un bajo</a>
+                    </h3>
+                    <p class="news-excerpt mb-0">Ajuste de alma, altura de silletas y quintado de precisión. Conoce cómo influye un puente bien calibrado en la comodidad al digitar y la afinación en los trastes más agudos.</p>
+                </article>
+            </div>
+
+        </div>
+
+        <nav aria-label="Paginación de noticias" class="mt-5 d-flex justify-content-center">
+            <ul class="pagination" id="lista-paginacion"></ul>
+        </nav>
+
+    </main>
+
+    <footer class="border-top py-4 text-center text-muted small bg-white mt-5">
+        <p class="mb-0">&copy; 2026 Chibson Instruments. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const itemsPorPaginaSelect = document.getElementById('select-posts-pagina');
+            const contenedor = document.getElementById('contenedor-noticias');
+            const paginacionUl = document.getElementById('lista-paginacion');
+            const conteoTexto = document.getElementById('conteo-noticias');
+
+            if (!contenedor || !itemsPorPaginaSelect) return;
+
+            const noticias = Array.from(contenedor.children);
+            let paginaActual = 1;
+
+            function renderizarPaginacion() {
+                const porPagina = parseInt(itemsPorPaginaSelect.value, 10);
+                const totalNoticias = noticias.length;
+                const totalPaginas = Math.ceil(totalNoticias / porPagina) || 1;
+
+                if (paginaActual > totalPaginas) {
+                    paginaActual = totalPaginas;
+                }
+
+                const inicio = (paginaActual - 1) * porPagina;
+                const fin = inicio + porPagina;
+
+                noticias.forEach((noticia, index) => {
+                    if (index >= inicio && index < fin) {
+                        noticia.style.setProperty('display', 'block', 'important');
+                    } else {
+                        noticia.style.setProperty('display', 'none', 'important');
+                    }
+                });
+
+                if (conteoTexto) {
+                    const finReal = Math.min(fin, totalNoticias);
+                    const inicioReal = totalNoticias === 0 ? 0 : inicio + 1;
+                    conteoTexto.textContent = `${inicioReal}–${finReal} de ${totalNoticias}`;
+                }
+
+                if (!paginacionUl) return;
+                paginacionUl.innerHTML = '';
+
+                if (totalPaginas <= 1) return;
+
+                const liPrev = document.createElement('li');
+                liPrev.className = `page-item ${paginaActual === 1 ? 'disabled' : ''}`;
+                liPrev.innerHTML = `<a class="page-link" href="#" aria-label="Anterior">&laquo;</a>`;
+                liPrev.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (paginaActual > 1) {
+                        paginaActual--;
+                        renderizarPaginacion();
+                    }
+                });
+                paginacionUl.appendChild(liPrev);
+
+                for (let i = 1; i <= totalPaginas; i++) {
+                    const li = document.createElement('li');
+                    li.className = `page-item ${paginaActual === i ? 'active' : ''}`;
+                    li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+                    li.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        paginaActual = i;
+                        renderizarPaginacion();
+                    });
+                    paginacionUl.appendChild(li);
+                }
+
+                const liNext = document.createElement('li');
+                liNext.className = `page-item ${paginaActual === totalPaginas ? 'disabled' : ''}`;
+                liNext.innerHTML = `<a class="page-link" href="#" aria-label="Siguiente">&raquo;</a>`;
+                liNext.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (paginaActual < totalPaginas) {
+                        paginaActual++;
+                        renderizarPaginacion();
+                    }
+                });
+                paginacionUl.appendChild(liNext);
+            }
+
+            itemsPorPaginaSelect.addEventListener('change', () => {
+                paginaActual = 1;
+                renderizarPaginacion();
+            });
+
+            renderizarPaginacion();
+        });
+    </script>
+
+</body>
+
+</html>
