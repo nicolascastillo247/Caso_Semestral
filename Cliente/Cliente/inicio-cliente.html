@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chibson Instruments - Cliente</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/miestilo.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="main-header border-bottom py-3">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <h1 class="h3 m-0 brand-title">Chibson Instruments</h1>
+            <nav aria-label="Navegación principal">
+                <ul class="nav">
+                    <li class="nav-item"><a href="inicio-cliente.html" class="nav-link px-2 active fw-bold">Inicio</a></li>
+                    <li class="nav-item"><span class="nav-link px-2 nav-static">Catálogo</span></li>
+                    <li class="nav-item"><a href="carrito.html" class="nav-link px-2">Carro</a></li>
+                    <li class="nav-item"><a href="mis-pedidos.html" class="nav-link px-2">Mis pedidos</a></li>
+                    <li class="nav-item"><a href="mis-devoluciones.html" class="nav-link px-2">Devoluciones</a></li>
+                    <li class="nav-item"><a href="mis-tickets.html" class="nav-link px-2">Soporte</a></li>
+                    <li class="nav-item"><a href="mi-perfil.html" class="nav-link px-2">Mi perfil</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container my-5">
+
+        <section class="row align-items-center g-4">
+            <div class="col-lg-6">
+                <h2 class="display-6 fw-bold">Encuentra tu próximo instrumento</h2>
+                <p class="lead">
+                    Explora nuestros instrumentos destacados y administra tus compras
+                    desde tu cuenta de Chibson Instruments.
+                </p>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card p-4 category-card shadow-sm border-0">
+                    <h3 class="h5 mb-3 fw-bold">Categorías Populares</h3>
+                    <ul class="list-unstyled mb-0 d-flex flex-column gap-2">
+                        <li><span class="category-link">→ Guitarras Eléctricas y Acústicas</span></li>
+                        <li><span class="category-link">→ Bajos Eléctricos</span></li>
+                        <li><span class="category-link">→ Baterías y Percusión</span></li>
+                        <li><span class="category-link">→ Teclados y Sintetizadores</span></li>
+                        <li><span class="category-link">→ Amplificadores, Pedales y Accesorios</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="custom-divider my-5">
+
+        <section>
+            <h3 class="fw-bold mb-4">Instrumentos Destacados</h3>
+
+            <div class="row g-4">
+
+                <div class="col-12 col-md-6">
+                    <article class="card h-100 product-card shadow-sm border-0 p-4">
+
+                        <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
+                            <div>
+                                <h4 class="h5 fw-bold m-0">
+                                    Guitarra Eléctrica Standard Custom
+                                </h4>
+
+                                <p class="price-tag my-2">$749.990 CLP</p>
+                            </div>
+
+                            <img src="img/guitarra.png"
+                                 alt="Guitarra Eléctrica"
+                                 class="card-icon-thumb shadow-sm">
+                        </div>
+
+                        <p class="small text-muted mb-4">
+                            Cuerpo de caoba maciza, tapa de arce flameado y
+                            pastillas Vintage Alnico V.
+                        </p>
+
+                        <div class="mt-auto">
+                            <a href="#" onclick="agregarAlCarro('guitarra'); return false;" class="btn btn-custom w-100">Agregar al carro</a>
+                        </div>
+
+                    </article>
+                </div>
+
+
+                <div class="col-12 col-md-6">
+                    <article class="card h-100 product-card shadow-sm border-0 p-4">
+
+                        <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
+                            <div>
+                                <h4 class="h5 fw-bold m-0">
+                                    Teclado Sintetizador Pro 61 Teclas
+                                </h4>
+
+                                <p class="price-tag my-2">$489.990 CLP</p>
+                            </div>
+
+                            <img src="img/teclado.png"
+                                 alt="Teclado Sintetizador"
+                                 class="card-icon-thumb shadow-sm">
+                        </div>
+
+                        <p class="small text-muted mb-4">
+                            Teclas semicontrapesadas, motor de síntesis analógica y
+                            conectividad USB-MIDI.
+                        </p>
+
+                        <div class="mt-auto">
+                            <a href="#" onclick="agregarAlCarro('teclado'); return false;" class="btn btn-custom w-100">Agregar al carro</a>
+                        </div>
+
+                    </article>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="custom-divider my-5">
+
+        <section class="contact-section p-4 rounded">
+            <h3 class="h5 fw-bold mb-2">Tu cuenta Chibson</h3>
+            <p class="mb-0">
+                Desde el menú puedes revisar tu carro, pedidos, devoluciones,
+                solicitudes de soporte y datos personales.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="border-top py-4 text-center text-muted small bg-white mt-5">
+        <p class="mb-0">&copy; 2026 Chibson Instruments. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/cliente.js"></script>
+</body>
+</html>

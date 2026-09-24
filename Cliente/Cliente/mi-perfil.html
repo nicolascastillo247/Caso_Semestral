@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perfil - Chibson Instruments</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/miestilo.css" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="main-header border-bottom py-3">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <h1 class="h3 m-0 brand-title">Chibson Instruments</h1>
+
+        <nav aria-label="Navegación principal">
+            <ul class="nav">
+                <li class="nav-item"><a href="inicio-cliente.html" class="nav-link px-2">Inicio</a></li>
+                <li class="nav-item"><span class="nav-link px-2 nav-static">Catálogo</span></li>
+                <li class="nav-item"><a href="carrito.html" class="nav-link px-2">Carro</a></li>
+                <li class="nav-item"><a href="mis-pedidos.html" class="nav-link px-2">Mis pedidos</a></li>
+                <li class="nav-item"><a href="mis-devoluciones.html" class="nav-link px-2">Devoluciones</a></li>
+                <li class="nav-item"><a href="mis-tickets.html" class="nav-link px-2">Soporte</a></li>
+                <li class="nav-item"><a href="mi-perfil.html" class="nav-link px-2 active fw-bold">Mi perfil</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<main class="container my-5">
+
+    <h1 class="display-6 fw-bold mb-2">Mi perfil</h1>
+
+    <p class="text-muted mb-4">
+        Revisa y actualiza tus datos personales, contraseña y dirección.
+    </p>
+
+
+    <div id="mensajeDatos" class="alert alert-success d-none">
+        Tus datos fueron actualizados correctamente.
+    </div>
+
+
+    <div class="row g-4">
+
+        <div class="col-lg-7">
+
+            <!-- DATOS PERSONALES -->
+            <div class="card section-card shadow-sm p-4 mb-4">
+
+                <h2 class="h4 fw-bold mb-3">Datos personales</h2>
+
+                <form id="formDatos" novalidate onsubmit="guardarDatos(event)">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+                            <label for="nombre" class="form-label">Nombre</label>
+
+                            <input
+                                id="nombre"
+                                class="form-control"
+                                type="text"
+                                value="Juan"
+                                required>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <label for="apellido" class="form-label">Apellido</label>
+
+                            <input
+                                id="apellido"
+                                class="form-control"
+                                type="text"
+                                value="Pérez"
+                                required>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <label for="rut" class="form-label">RUT</label>
+
+                            <input
+                                id="rut"
+                                class="form-control"
+                                type="text"
+                                value="123456785"
+                                placeholder="Ej: 123456785 o 12.345.678-5"
+                                required>
+
+                            <div class="form-text">
+                                Puedes escribirlo con o sin puntos y guion.
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <label for="correo" class="form-label">Correo</label>
+
+                            <input
+                                id="correo"
+                                class="form-control"
+                                type="email"
+                                value="cliente@correo.cl"
+                                required>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <label for="telefono" class="form-label">Teléfono</label>
+
+                            <input
+                                id="telefono"
+                                class="form-control"
+                                type="tel"
+                                value="+56 9 1234 5678">
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit" class="btn btn-custom mt-4">
+                        Actualizar datos
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- CONTRASEÑA -->
+            <div class="card section-card shadow-sm p-4">
+
+                <h2 class="h4 fw-bold mb-3">Cambiar contraseña</h2>
+
+                <div id="mensajePassword" class="alert alert-success d-none">
+                    Contraseña actualizada correctamente.
+                </div>
+
+                <div id="errorPassword" class="alert alert-danger d-none">
+                    Las contraseñas no coinciden.
+                </div>
+
+
+                <form id="formPassword" novalidate onsubmit="cambiarPassword(event)">
+
+                    <div class="mb-3">
+
+                        <label for="password" class="form-label">
+                            Nueva contraseña
+                        </label>
+
+                        <input
+                            id="password"
+                            class="form-control"
+                            type="password"
+                            minlength="8"
+                            pattern="(?=.*[A-Za-z])(?=.*\d).{8,}"
+                            required>
+
+                        <div class="form-text">
+                            Mínimo 8 caracteres, una letra y un número.
+                        </div>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label for="confirmar" class="form-label">
+                            Confirmar contraseña
+                        </label>
+
+                        <input
+                            id="confirmar"
+                            class="form-control"
+                            type="password"
+                            minlength="8"
+                            required>
+
+                    </div>
+
+
+                    <button type="submit" class="btn btn-outline-dark">
+                        Actualizar contraseña
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-5">
+
+            <!-- DIRECCIÓN -->
+            <div class="card category-card border-0 p-4">
+
+                <h2 class="h4 fw-bold mb-3">Mi dirección</h2>
+
+
+                <div id="direccionVista" class="bg-white rounded p-3">
+
+                    <strong>Dirección principal</strong>
+
+                    <p id="textoDireccion" class="text-muted mb-3">
+                        Los Carrera 1234, Concepción, Región del Biobío
+                    </p>
+
+                    <button
+                        type="button"
+                        id="botonEditarDireccion"
+                        class="btn btn-outline-dark btn-sm"
+                        onclick="editarDireccion()">
+
+                        Editar dirección
+
+                    </button>
+
+                </div>
+
+
+                <form id="formDireccion" class="d-none mt-3" novalidate onsubmit="guardarDireccion(event)">
+
+                    <div class="mb-2">
+                        <label for="calle" class="form-label">Calle y número</label>
+
+                        <input
+                            id="calle"
+                            type="text"
+                            class="form-control"
+                            value="Los Carrera 1234"
+                            required>
+                    </div>
+
+
+                    <div class="mb-2">
+                        <label for="comuna" class="form-label">Comuna</label>
+
+                        <input
+                            id="comuna"
+                            type="text"
+                            class="form-control"
+                            value="Concepción"
+                            required>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="region" class="form-label">Región</label>
+
+                        <input
+                            id="region"
+                            type="text"
+                            class="form-control"
+                            value="Región del Biobío"
+                            required>
+                    </div>
+
+
+                    <div class="d-flex gap-2">
+
+                        <button type="submit" class="btn btn-custom btn-sm">
+                            Guardar
+                        </button>
+
+                        <button
+                            type="button"
+                            id="botonCancelarDireccion"
+                            class="btn btn-outline-secondary btn-sm"
+                            onclick="cancelarDireccion()">
+
+                            Cancelar
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer class="border-top py-4 text-center text-muted small bg-white mt-5">
+    <p class="mb-0">&copy; 2026 Chibson Instruments. Todos los derechos reservados.</p>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script src="js/cliente.js"></script>
+</body>
+</html>

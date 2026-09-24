@@ -1,0 +1,206 @@
+:root {
+    --color-slate: #87898C;
+    --color-cream: #F2EFBD;
+    --color-bg: #F2F2F0;
+    --color-accent: #F2CA80;
+    --color-dark: #0D0D0D;
+
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-dark);
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6, .brand-title {
+    font-family: var(--font-heading);
+    color: var(--color-dark);
+}
+
+.main-header {
+    background-color: #ffffff;
+    border-color: var(--color-slate) !important;
+}
+
+.main-header .nav-link {
+    color: var(--color-dark);
+    font-family: var(--font-heading);
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.main-header .nav-link:hover {
+    color: #b58933;
+}
+
+.logo-img {
+    max-width: 240px;
+    height: auto;
+}
+
+.custom-divider {
+    border: none;
+    border-top: 1px solid var(--color-slate);
+    opacity: 0.35;
+}
+
+.category-card {
+    background-color: var(--color-cream);
+    border-radius: 8px;
+}
+
+.category-link {
+    color: var(--color-dark);
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.2s ease, color 0.2s ease;
+    display: inline-block;
+}
+
+.category-link:hover {
+    color: #6d5b00;
+    transform: translateX(4px);
+}
+
+.product-card, .blog-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover, .blog-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(13, 13, 13, 0.08) !important;
+}
+
+.price-tag {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #9d6d1b;
+}
+
+.btn-custom {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    border: 1px solid rgba(13, 13, 13, 0.1);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-custom:hover {
+    background-color: #deb160;
+    color: var(--color-dark);
+}
+
+.blog-thumb {
+    width: 150px;
+    height: 130px;
+    object-fit: cover;
+    border: 1px solid var(--color-slate);
+}
+
+.text-link {
+    color: var(--color-dark);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+    color: #9d6d1b;
+}
+
+.contact-section {
+    background-color: var(--color-cream);
+    border-left: 5px solid var(--color-accent);
+}
+
+.card-icon-thumb {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    background-color: #ffffff;
+    border: 1px solid var(--color-slate);
+    border-radius: 8px;
+    padding: 4px;
+}
+
+/* Extensiones mínimas exclusivas del Cliente */
+.section-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.badge-custom {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+}
+
+/* Catálogo se ve igual que un enlace del menú, pero todavía no navega. */
+.nav-static {
+    cursor: default;
+    user-select: none;
+}
+
+.table thead th {
+    background-color: var(--color-cream);
+    border-bottom: 2px solid var(--color-accent);
+    color: var(--color-dark);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 0.2rem rgba(242, 202, 128, 0.30);
+}
+
+
+/* Ajustes funcionales y responsivos del módulo Cliente */
+.producto-carro-img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.cantidad-carro {
+    max-width: 120px;
+}
+
+.resumen-compra {
+    position: sticky;
+    top: 20px;
+}
+
+.nav-static:hover {
+    color: var(--color-dark) !important;
+}
+
+.alert-success {
+    background-color: var(--color-cream);
+    border-color: var(--color-accent);
+    color: var(--color-dark);
+}
+
+@media (max-width: 768px) {
+    .main-header .container {
+        justify-content: center !important;
+    }
+
+    .main-header .nav {
+        justify-content: center;
+    }
+
+    .producto-carro-img {
+        width: 75px;
+        height: 75px;
+    }
+
+    .resumen-compra {
+        position: static;
+    }
+}

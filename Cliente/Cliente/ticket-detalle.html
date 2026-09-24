@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle ticket - Chibson Instruments</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/miestilo.css" rel="stylesheet">
+</head>
+<body>
+
+
+<header class="main-header border-bottom py-3">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <h1 class="h3 m-0 brand-title">Chibson Instruments</h1>
+            <nav aria-label="Navegación principal">
+                <ul class="nav">
+                    <li class="nav-item"><a href="inicio-cliente.html" class="nav-link px-2">Inicio</a></li>
+                    <li class="nav-item"><span class="nav-link px-2 nav-static">Catálogo</span></li>
+                    <li class="nav-item"><a href="carrito.html" class="nav-link px-2">Carro</a></li>
+                    <li class="nav-item"><a href="mis-pedidos.html" class="nav-link px-2">Mis pedidos</a></li>
+                    <li class="nav-item"><a href="mis-devoluciones.html" class="nav-link px-2">Devoluciones</a></li>
+                    <li class="nav-item"><a href="mis-tickets.html" class="nav-link px-2 active fw-bold">Soporte</a></li>
+                    <li class="nav-item"><a href="mi-perfil.html" class="nav-link px-2">Mi perfil</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+
+<main class="container my-5">
+    <a href="mis-tickets.html" class="text-link">← Volver a mis tickets</a>
+    <h1 class="display-6 fw-bold mt-3">Ticket #TCK-001</h1>
+    <p><span class="badge text-bg-success">Resuelto</span></p>
+
+    <div class="card section-card shadow-sm p-4 mb-4">
+        <h2 class="h4 fw-bold">Conversación</h2>
+
+        <div class="category-card rounded p-3 mb-3">
+            <strong>Cliente</strong>
+            <p class="mb-0">¿Cuánto tiempo de garantía tiene mi producto?</p>
+        </div>
+
+        <div class="border rounded p-3">
+            <strong>Soporte Chibson</strong>
+            <p class="mb-0">Hola. La garantía se aplica según las condiciones informadas en la compra.</p>
+        </div>
+    </div>
+
+    <div class="card section-card shadow-sm p-4">
+        <h2 class="h4 fw-bold">Calificar atención</h2>
+
+        <div id="mensaje-calificacion" class="alert alert-success d-none">Calificación enviada correctamente.</div>
+        <form id="form-calificacion-ticket" novalidate onsubmit="calificarTicket(event)">
+            <div class="mb-3">
+                <label for="nota" class="form-label">Calificación</label>
+                <select id="nota" class="form-select" required>
+                    <option value="">Seleccione</option>
+                    <option>5 - Excelente</option>
+                    <option>4 - Buena</option>
+                    <option>3 - Regular</option>
+                    <option>2 - Mala</option>
+                    <option>1 - Muy mala</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="comentario" class="form-label">Comentario</label>
+                <textarea id="comentario" class="form-control" rows="4"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-custom">Enviar calificación</button>
+        </form>
+    </div>
+</main>
+
+
+
+<footer class="border-top py-4 text-center text-muted small bg-white mt-5">
+    <p class="mb-0">&copy; 2026 Chibson Instruments. Todos los derechos reservados.</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script src="js/cliente.js"></script>
+</body>
+</html>
