@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/admincss.css">
+    <title>Dashboard general</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/admincss.css">
 </head>
 
 <body>
+
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Logo</a>
@@ -23,15 +24,9 @@
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown">
@@ -51,169 +46,347 @@
             </div>
         </div>
     </nav>
-    <div class="d-flex">
-        <!-- Sidebar -->
-        <button type="button" class="btn btn-dark rounded-circle shadow position-fixed 
-            bottom-0 start-0 m-4 d-flex align-items-center justify-content-center"
-            style="width:56px;height:56px; z-index:1050;" title="Acción rápida" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasSide">
-            <i class="bi bi-arrow-right" style="font-size:1.5rem; color:white;"></i>
-        </button>
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSide" aria-labelledby="offcanvasExampleLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+
+    <!-- Encabezado -->
+    <div class="p-3">
+        <h5 class="mb-0">Dashboard general</h5>
+        <div class="text-secondary small">Miércoles, 16 de septiembre — vista general de la tienda</div>
+    </div>
+
+    <!-- Sidebar -->
+    <button type="button"
+        class="btn btn-dark rounded-circle shadow position-fixed bottom-0 start-0 m-4 d-flex align-items-center justify-content-center"
+        style="width:56px;height:56px; z-index:1030;" title="Acción rápida" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasSide">
+        <i class="bi bi-arrow-right" style="font-size:1.5rem;color:white;"></i>
+    </button>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSide" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action fs-5 py-3">Dashboard</a>
+                <a href="#" class="list-group-item list-group-item-action fs-5 py-3">Pedidos</a>
+                <a href="#" class="list-group-item list-group-item-action fs-5 py-3">Productos</a>
+                <a href="Resenas.html" class="list-group-item list-group-item-action fs-5 py-3">Reseñas</a>
+                <a href="#" class="list-group-item list-group-item-action fs-5 py-3">Soporte</a>
             </div>
-            <div class="offcanvas-body p-0">
-                <div class="list-group list-group-flush">
-                    <a href="#" class="list-group-item list-group-item-action fs-5 py-3">Dashboard</a>
-                    <a href="#" class="list-group-item list-group-item-action fs-5 py-3">Pedidos</a>
-                    <a href="#" class="list-group-item list-group-item-action fs-5 py-3">Productos</a>
-                    <a href="#" class="list-group-item list-group-item-action fs-5 py-3">Soporte</a>
+        </div>
+    </div>
+
+    <div class="container-fluid px-3 px-lg-4 pb-5">
+
+        <!-- Tarjetas resumen -->
+        <div class="row row-cols-2 row-cols-xl-5 g-3 mb-4">
+
+            <!-- Ventas del día -->
+            <div class="col">
+                <a href="Ventas.html" class="card text-decoration-none text-dark h-100" title="Ir a Ventas">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <i class="bi bi-cash-coin fs-4"></i>
+                            <span class="badge bg-light text-dark rounded-pill">Hoy</span>
+                        </div>
+                        <div class="text-secondary small mb-1">Ventas del día</div>
+                        <div class="fs-3 fw-bold">$1.284.500</div>
+                        <div class="text-secondary small">32 ventas registradas</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Ventas del mes vs mes pasado -->
+            <div class="col">
+                <a href="Ventas.html" class="card text-decoration-none text-dark h-100" title="Ir a Ventas">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <i class="bi bi-graph-up-arrow fs-4"></i>
+                            <span class="badge bg-light text-dark rounded-pill">Septiembre</span>
+                        </div>
+                        <div class="text-secondary small mb-1">Ventas del mes (1–23)</div>
+                        <div class="fs-3 fw-bold">$28.640.000</div>
+                        <div class="small">
+                            <span class="text-success fw-semibold"><i class="bi bi-arrow-up-right"></i> +12,4%</span>
+                            <span class="text-secondary">vs. mes pasado</span>
+                        </div>
+                        <div class="text-secondary small">Agosto (1–23): $25.480.000</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Pedidos pendientes -->
+            <div class="col">
+                <a href="Pedidos.html" class="card text-decoration-none text-dark h-100"
+                    title="Ir al listado de pedidos">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <i class="bi bi-truck fs-4"></i>
+                        </div>
+                        <div class="text-secondary small mb-1">Pedidos pendientes</div>
+                        <div class="fs-3 fw-bold">14</div>
+                        <div class="small fw-semibold">Ver pedidos <i class="bi bi-arrow-right ms-1"></i></div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Stock bajo -->
+            <div class="col">
+                <a href="Productos.html" class="card text-decoration-none text-dark h-100"
+                    title="Ir al listado de productos">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <i class="bi bi-exclamation-triangle fs-4"></i>
+                        </div>
+                        <div class="text-secondary small mb-1">Productos con stock bajo</div>
+                        <div class="fs-3 fw-bold">6</div>
+                        <div class="small fw-semibold">Ver productos <i class="bi bi-arrow-right ms-1"></i></div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Tickets abiertos -->
+            <div class="col">
+                <a href="Soporte.html" class="card text-decoration-none text-dark h-100" title="Ir a Soporte">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <i class="bi bi-life-preserver fs-4"></i>
+                        </div>
+                        <div class="text-secondary small mb-1">Tickets de soporte abiertos</div>
+                        <div class="fs-3 fw-bold">0</div>
+                        <div class="text-secondary small">Sin tickets pendientes</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Fila 1: ventas 7 días + resumen rápido -->
+        <div class="row g-3 mb-3">
+            <div class="col-12 col-xl-8">
+                <div class="card h-100">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="mb-0">Ventas de los últimos 7 días</h6>
+                            <div class="text-secondary small">Se actualiza automáticamente al ingresar al dashboard
+                            </div>
+                        </div>
+                        <span class="badge bg-light text-dark rounded-pill">Últimos 7 días</span>
+                    </div>
+                    <div class="card-body">
+                        <div style="position:relative;height:280px;">
+                            <canvas id="salesChart"></canvas>
+                        </div>
+                        <!--
+                            Estado alternativo cuando no hay ventas registradas en el rango (HU-18, criterio 3):
+                            mostrar este mensaje en vez del gráfico, sin errores.
+
+                            <div class="text-center text-secondary py-5">
+                                <i class="bi bi-bar-chart fs-1 mb-2 d-block"></i>
+                                No hay ventas registradas en los últimos 7 días.
+                            </div>
+                        -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-xl-4">
+                <div class="card h-100">
+                    <div class="card-header bg-white">
+                        <h6 class="mb-0">Resumen rápido</h6>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li class="d-flex justify-content-between py-2 border-bottom">
+                                <span class="text-secondary">Ticket promedio</span>
+                                <span class="fw-semibold">$40.140</span>
+                            </li>
+                            <li class="d-flex justify-content-between py-2 border-bottom">
+                                <span class="text-secondary">Producto más vendido</span>
+                                <span class="fw-semibold">Cuerdas Elixir Nanoweb</span>
+                            </li>
+                            <li class="d-flex justify-content-between py-2 border-bottom">
+                                <span class="text-secondary">Nuevos clientes hoy</span>
+                                <span class="fw-semibold">5</span>
+                            </li>
+                            <li class="d-flex justify-content-between py-2">
+                                <span class="text-secondary">Devoluciones abiertas</span>
+                                <span class="fw-semibold">2</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Main -->
 
-        <div class="flex-grow-1">
-            <!-- Topbar -->
-            <div class="topbar bg-white border-bottom d-flex align-items-center justify-content-between px-4 py-3">
-                <div>
-                    <h5 class="mb-0">Dashboard general</h5>
-                    <div class="text-secondary small">Miércoles, 16 de septiembre — vista general de la tienda</div>
-                </div>
-                <div class="d-flex align-items-center gap-3">
-                    <i class="fa-regular fa-bell fs-5 text-secondary"></i>
-                    <div class="rounded-circle bg-secondary-subtle d-flex align-items-center justify-content-center"
-                        style="width:38px;height:38px;">
-                        <i class="fa-solid fa-user text-secondary"></i>
+        <!-- Fila 2: ventas por categoría + top 5 productos -->
+        <div class="row g-3 mb-3">
+            <div class="col-12 col-xl-5">
+                <div class="card h-100">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="mb-0">Ventas por categoría</h6>
+                            <div class="text-secondary small">Septiembre (1–23)</div>
+                        </div>
+                        <span class="badge bg-light text-dark rounded-pill">Este mes</span>
+                    </div>
+                    <div class="card-body">
+                        <div style="position:relative;height:300px;">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="p-4">
-                <div class="row g-3 mb-4">
-                    <!-- Ventas del día -->
-                    <div class="col-6 col-xl-3">
-                        <a href="#" class="card text-decoration-none text-dark h-100"
-                            title="Maqueta: no dirige a ninguna página aún">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-start mb-3">
-                                    <div><i class="fa-solid fa-sack-dollar"></i></div>
-                                    <span class="badge bg-light text-dark rounded-pill">Hoy</span>
-                                </div>
-                                <div class="text-secondary small mb-1">Ventas del día</div>
-                                <div class="fs-3 fw-bold">$1.284.500</div>
-                                <div class="text-secondary small">32 ventas registradas</div>
-                            </div>
-                        </a>
+
+            <div class="col-12 col-xl-7">
+                <div class="card h-100">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="mb-0">Top 5 productos más vendidos</h6>
+                            <div class="text-secondary small">Por unidades vendidas — septiembre (1–23)</div>
+                        </div>
+                        <a href="Productos.html" class="btn btn-sm btn-primary">Ver productos</a>
                     </div>
-                    <!-- Pedidos pendientes -->
-                    <div class="col-6 col-xl-3">
-                        <a href="#" class="card text-decoration-none text-dark h-100"
-                            title="Maqueta: iría al listado filtrado de pedidos pendientes">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-start mb-3">
-                                    <div><i class="fa-solid fa-truck-fast"></i></div>
-                                </div>
-                                <div class="text-secondary small mb-1">Pedidos pendientes</div>
-                                <div class="fs-3 fw-bold">14</div>
-                                <div class="small fw-semibold">Ver listado de pedidos <i
-                                        class="fa-solid fa-arrow-right-long ms-1"></i></div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Stock bajo -->
-                    <div class="col-6 col-xl-3">
-                        <a href="#" class="card text-decoration-none text-dark h-100"
-                            title="Maqueta: iría al listado de productos bajo el umbral">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-start mb-3">
-                                    <div><i class="fa-solid fa-triangle-exclamation"></i></div>
-                                </div>
-                                <div class="text-secondary small mb-1">Productos con stock bajo</div>
-                                <div class="fs-3 fw-bold">6</div>
-                                <div class="small fw-semibold">Ver productos <i
-                                        class="fa-solid fa-arrow-right-long ms-1"></i></div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Tickets abiertos -->
-                    <div class="col-6 col-xl-3">
-                        <a href="#" class="card text-decoration-none text-dark h-100"
-                            title="Maqueta: iría al listado de soporte">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-start mb-3">
-                                    <div><i class="fa-solid fa-life-ring"></i></div>
-                                </div>
-                                <div class="text-secondary small mb-1">Tickets de soporte abiertos</div>
-                                <div class="fs-3 fw-bold">0</div>
-                                <div class="text-secondary small">Sin tickets pendientes</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="row g-3">
-                    <!-- HU-18: Gráfico de ventas -->
-                    <div class="col-12 col-xl-8">
-                        <div class="card h-100">
-                            <div class="card-header bg-white d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="mb-0">Ventas de los últimos 7 días</h6>
-                                    <div class="text-secondary small">Se actualiza automáticamente al ingresar al
-                                        dashboard</div>
-                                </div>
-                                <span class="badge bg-light text-dark rounded-pill">Últimos 7 días</span>
-                            </div>
-                            <div class="card-body">
-                                <canvas id="salesChart" height="110"></canvas>
-                                <!--
-                Estado alternativo cuando no hay ventas registradas en el rango (HU-18, criterio 3):
-                mostrar mensaje en vez del gráfico, sin errores. Ejemplo:
- 
-                <div class="empty-chart-state text-center text-secondary py-5">
-                  <i class="fa-regular fa-chart-bar fs-1 mb-2 d-block"></i>
-                  No hay ventas registradas en los últimos 7 días.
-                </div>
-              -->
-                            </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-striped align-middle mb-0">
+                                <thead>
+                                    <tr>
+                                        <th style="width:8%;">#</th>
+                                        <th>Producto</th>
+                                        <th style="width:16%;">Categoría</th>
+                                        <th style="width:13%;" class="text-end">Unidades</th>
+                                        <th style="width:18%;" class="text-end">Ingresos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Cuerdas Elixir Nanoweb</td>
+                                        <td>Cuerdas</td>
+                                        <td class="text-end">46</td>
+                                        <td class="text-end">$1.150.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Baquetas Vic Firth 5B</td>
+                                        <td>Percusión</td>
+                                        <td class="text-end">31</td>
+                                        <td class="text-end">$372.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Armónica Hohner Special 20</td>
+                                        <td>Viento</td>
+                                        <td class="text-end">18</td>
+                                        <td class="text-end">$324.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Fender Stratocaster</td>
+                                        <td>Guitarra</td>
+                                        <td class="text-end">5</td>
+                                        <td class="text-end">$7.500.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Yamaha P-45</td>
+                                        <td>Teclas</td>
+                                        <td class="text-end">3</td>
+                                        <td class="text-end">$4.050.000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <!-- Resumen lateral -->
-                    <div class="col-12 col-xl-4">
-                        <div class="card h-100">
-                            <div class="card-header bg-white">
-                                <h6 class="mb-0">Resumen rápido</h6>
-                            </div>
-                            <div class="card-body">
-                                <ul class="list-unstyled mb-0">
-                                    <li class="d-flex justify-content-between py-2 border-bottom">
-                                        <span class="text-secondary">Ticket promedio</span>
-                                        <span class="fw-semibold">$40.140</span>
-                                    </li>
-                                    <li class="d-flex justify-content-between py-2 border-bottom">
-                                        <span class="text-secondary">Producto más vendido</span>
-                                        <span class="fw-semibold">Zapatilla Urban</span>
-                                    </li>
-                                    <li class="d-flex justify-content-between py-2 border-bottom">
-                                        <span class="text-secondary">Nuevos clientes hoy</span>
-                                        <span class="fw-semibold">5</span>
-                                    </li>
-                                    <li class="d-flex justify-content-between py-2">
-                                        <span class="text-secondary">Devoluciones abiertas</span>
-                                        <span class="fw-semibold">2</span>
-                                    </li>
-                                </ul>
-                            </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fila 3: pedidos por región + stock bajo -->
+        <div class="row g-3">
+            <div class="col-12 col-xl-7">
+                <div class="card h-100">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="mb-0">Pedidos por región</h6>
+                            <div class="text-secondary small">Según la región de destino — septiembre (1–23)</div>
+                        </div>
+                        <a href="Pedidos.html" class="btn btn-sm btn-primary">Ver pedidos</a>
+                    </div>
+                    <div class="card-body">
+                        <div style="position:relative;height:400px;">
+                            <canvas id="regionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-xl-5">
+                <div class="card h-100">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="mb-0">Productos con stock bajo</h6>
+                            <div class="text-secondary small">Umbral: 5 unidades o menos</div>
+                        </div>
+                        <a href="Productos.html" class="btn btn-sm btn-primary">Ver productos</a>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-striped align-middle mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th style="width:24%;">Categoría</th>
+                                        <th style="width:18%;" class="text-end">Unidades</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Batería Pearl Export</td>
+                                        <td>Percusión</td>
+                                        <td class="text-end"><span class="badge bg-danger">1</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fender Stratocaster</td>
+                                        <td>Guitarra</td>
+                                        <td class="text-end"><span class="badge bg-danger">2</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Yamaha P-45</td>
+                                        <td>Teclas</td>
+                                        <td class="text-end"><span class="badge bg-danger">2</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fender Precision Bass</td>
+                                        <td>Bajo</td>
+                                        <td class="text-end"><span class="badge bg-warning text-dark">3</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Armónica Hohner Special 20</td>
+                                        <td>Viento</td>
+                                        <td class="text-end"><span class="badge bg-warning text-dark">3</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cuerdas Elixir Nanoweb</td>
+                                        <td>Cuerdas</td>
+                                        <td class="text-end"><span class="badge bg-warning text-dark">4</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <canvas id="salesChart"></canvas>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
     <script>
+        const clp = n => '$' + Number(n).toLocaleString('es-CL');
+
+        // Ventas de los últimos 7 días
         new Chart(document.getElementById('salesChart'), {
             type: 'line',
             data: {
@@ -221,13 +394,71 @@
                 datasets: [{
                     label: 'Ventas ($)',
                     data: [820000, 940000, 1310000, 760000, 990000, 1150000, 1284500],
-                    borderColor: 'blue',
-                    borderWidth: 2
+                    borderColor: '#0d6efd',
+                    backgroundColor: 'rgba(13, 110, 253, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: true,
+                    pointRadius: 3
                 }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { label: c => clp(c.parsed.y) } }
+                },
+                scales: {
+                    y: { beginAtZero: true, ticks: { callback: v => clp(v) } }
+                }
+            }
+        });
+
+        // Ventas por categoría (mes actual)
+        new Chart(document.getElementById('categoryChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Guitarra', 'Bajo', 'Percusión', 'Teclas', 'Viento', 'Cuerdas'],
+                datasets: [{
+                    data: [11200000, 5150000, 4300000, 4900000, 1450000, 1640000],
+                    backgroundColor: ['#0d6efd', '#6610f2', '#d63384', '#fd7e14', '#198754', '#0dcaf0']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: { callbacks: { label: c => ' ' + c.label + ': ' + clp(c.parsed) } }
+                }
+            }
+        });
+
+        // Pedidos por región de destino (mes actual)
+        new Chart(document.getElementById('regionChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Metropolitana', 'Biobío', 'Valparaíso', 'Maule', 'Araucanía', 'Ñuble', "O'Higgins",
+                    'Los Lagos', 'Coquimbo', 'Antofagasta', 'Los Ríos', 'Atacama', 'Tarapacá', 'Magallanes'],
+                datasets: [{
+                    label: 'Pedidos',
+                    data: [46, 21, 17, 8, 7, 6, 6, 5, 4, 3, 2, 1, 1, 1],
+                    backgroundColor: '#0d6efd',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { beginAtZero: true, ticks: { precision: 0 } }
+                }
             }
         });
     </script>
 </body>
-<script src="js/bootstrap.bundle.min.js"></script>
 
 </html>

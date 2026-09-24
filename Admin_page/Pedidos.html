@@ -76,6 +76,10 @@
                                         <label class="form-check-label" for="pdfColFecha">Fecha</label>
                                     </div>
                                     <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="pdfColDestino" checked>
+                                        <label class="form-check-label" for="pdfColDestino">Destino</label>
+                                    </div>
+                                    <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="pdfColTotal" checked>
                                         <label class="form-check-label" for="pdfColTotal">Total</label>
                                     </div>
@@ -170,6 +174,10 @@
                                         <label class="form-check-label" for="exColFecha">Fecha</label>
                                     </div>
                                     <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="exColDestino" checked>
+                                        <label class="form-check-label" for="exColDestino">Destino</label>
+                                    </div>
+                                    <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="exColTotal" checked>
                                         <label class="form-check-label" for="exColTotal">Total</label>
                                     </div>
@@ -248,6 +256,7 @@
                 <a href="#" class="list-group-item list-group-item-action fs-5 py-3">Dashboard</a>
                 <a href="#" class="list-group-item list-group-item-action fs-5 py-3">Pedidos</a>
                 <a href="#" class="list-group-item list-group-item-action fs-5 py-3">Productos</a>
+                <a href="Resenas.html" class="list-group-item list-group-item-action fs-5 py-3">Reseñas</a>
                 <a href="#" class="list-group-item list-group-item-action fs-5 py-3">Soporte</a>
             </div>
         </div>
@@ -265,7 +274,7 @@
                                 <i class="bi bi-search text-muted"></i>
                             </span>
                             <input type="text" class="form-control border-start-0"
-                                placeholder="Buscar por N° de pedido o cliente..." aria-label="Buscar">
+                                placeholder="Buscar por N° de pedido, cliente o destino..." aria-label="Buscar">
                         </div>
 
                         <div class="dropdown">
@@ -286,7 +295,29 @@
                                         <option>En camino</option>
                                         <option>Entregado</option>
                                         <option>Cancelado</option>
-                                        <option>Devolucion</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label small text-muted mb-1">Región de destino</label>
+                                    <select class="form-select form-select-sm" name="region">
+                                        <option value="" selected>Todas las regiones</option>
+                                        <option>Arica y Parinacota</option>
+                                        <option>Tarapacá</option>
+                                        <option>Antofagasta</option>
+                                        <option>Atacama</option>
+                                        <option>Coquimbo</option>
+                                        <option>Valparaíso</option>
+                                        <option>Metropolitana</option>
+                                        <option>O'Higgins</option>
+                                        <option>Maule</option>
+                                        <option>Ñuble</option>
+                                        <option>Biobío</option>
+                                        <option>Araucanía</option>
+                                        <option>Los Ríos</option>
+                                        <option>Los Lagos</option>
+                                        <option>Aysén</option>
+                                        <option>Magallanes</option>
                                     </select>
                                 </div>
 
@@ -352,18 +383,33 @@
                             <div class="text-secondary small">Estado</div>
                             <div class="fw-bold">En camino</div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="text-secondary small">Región de destino</div>
+                            <div class="fw-bold">Biobío</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-secondary small">Comuna</div>
+                            <div class="fw-bold">Concepción</div>
+                        </div>
+                        <div class="col-12">
+                            <div class="text-secondary small">Dirección de envío</div>
+                            <div class="fw-bold">Av. Ejemplo 1234, Depto. 56</div>
+                        </div>
                     </div>
 
                     <div class="table-responsive">
                         <table class="table table-striped align-middle mb-0">
                             <thead>
-                                <tr>
-                                    <th>SKU</th>
-                                    <th>Producto</th>
-                                    <th class="text-end">Cantidad</th>
-                                    <th class="text-end">Precio</th>
-                                </tr>
-                            </thead>
+                    <tr>
+                        <th style="width:9%;">N° de Pedido</th>
+                        <th style="width:16%;">Cliente</th>
+                        <th style="width:11%;">Fecha</th>
+                        <th style="width:20%;">Destino</th>
+                        <th style="width:12%;">Total</th>
+                        <th style="width:22%;">Estado</th>
+                        <th style="width:10%;" class="text-end">Acciones</th>
+                    </tr>
+                </thead>
                             <tbody>
                                 <tr>
                                     <td>123gfd</td>
@@ -404,7 +450,6 @@
                             <option>En camino</option>
                             <option>Entregado</option>
                             <option>Cancelado</option>
-                            <option>Devolucion</option>
                         </select>
                     </form>
                 </div>
@@ -454,6 +499,7 @@
                         <td>0001</td>
                         <td>Juan Perez</td>
                         <td>12-08-2026</td>
+                        <td>Concepción, Biobío</td>
                         <td>$2.000.000</td>
                         <td>
                             <span class="me-2">En camino</span>
@@ -462,7 +508,7 @@
                                 Actualizar
                             </button>
                         </td>
-                        <td class="text-end">
+                        <td class="text-end text-nowrap">
                             <button type="button" class="btn btn-sm btn-danger" title="Eliminar" data-bs-toggle="modal"
                                 data-bs-target="#delPedidoModal">
                                 <i class="bi bi-trash"></i>
@@ -478,6 +524,7 @@
                         <td>0002</td>
                         <td>Maria Gonzalez</td>
                         <td>14-08-2026</td>
+                        <td>Providencia, Metropolitana</td>
                         <td>$850.000</td>
                         <td>
                             <span class="me-2">Pendiente</span>
@@ -486,7 +533,7 @@
                                 Actualizar
                             </button>
                         </td>
-                        <td class="text-end">
+                        <td class="text-end text-nowrap">
                             <button type="button" class="btn btn-sm btn-danger" title="Eliminar" data-bs-toggle="modal"
                                 data-bs-target="#delPedidoModal">
                                 <i class="bi bi-trash"></i>
@@ -502,6 +549,7 @@
                         <td>0003</td>
                         <td>Pedro Soto</td>
                         <td>20-08-2026</td>
+                        <td>Viña del Mar, Valparaíso</td>
                         <td>$1.250.000</td>
                         <td>
                             <span class="me-2">Entregado</span>
@@ -510,7 +558,7 @@
                                 Actualizar
                             </button>
                         </td>
-                        <td class="text-end">
+                        <td class="text-end text-nowrap">
                             <button type="button" class="btn btn-sm btn-danger" title="Eliminar" data-bs-toggle="modal"
                                 data-bs-target="#delPedidoModal">
                                 <i class="bi bi-trash"></i>
@@ -522,12 +570,51 @@
                         </td>
                     </tr>
                     <!-- Filas de espacio, igual que el template -->
-                    <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
