@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router';
 import { ChevronDown, Filter, MessageSquareReply, RefreshCw, Search, SlidersHorizontal } from 'lucide-react';
 
 import useResenas from '../hooks/useResenas';
@@ -23,7 +24,9 @@ export const ResenaPage = () => {
   const { resenas, loading, error, recargar } = useResenas();
 
   // 2. Filtros, página y modal
-  const [texto, setTexto] = useState('');
+  // Si viene de Productos (/admin/resenas?q=GTR-0001), el buscador parte con ese SKU
+  const [params] = useSearchParams();
+  const [texto, setTexto] = useState(params.get('q') ?? '');
   const [estado, setEstado] = useState<EstadoResena | ''>('');
   const [calificacion, setCalificacion] = useState('');
   const [desde, setDesde] = useState('');
