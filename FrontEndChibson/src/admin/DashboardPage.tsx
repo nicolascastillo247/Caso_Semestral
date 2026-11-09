@@ -281,7 +281,7 @@ export const DashboardPage = () => {
               <span>Nuevos clientes hoy</span>
               <strong>{clientesNuevosHoy ?? '—'}</strong>
             </Link>
-            <Link to="/admin/pedidos" className="flex justify-between hover:underline">
+            <Link to="/admin/pedidos?tab=devoluciones" className="flex justify-between hover:underline">
               <span>Devoluciones abiertas</span>
               <strong>{devolucionesPendientes ?? '—'}</strong>
             </Link>
