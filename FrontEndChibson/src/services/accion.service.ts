@@ -26,6 +26,12 @@ export const AccionService = {
   async listar(): Promise<RegistroAccion[]> {
     const { data } = await apiClient.get<RegistroAccion[]>(resource);
     return Array.isArray(data) ? data : [];
+  },
+
+  // Acciones de un administrador ("Historial del usuario" en la página de Usuarios)
+  async listarPorAdministrador(rut: string): Promise<RegistroAccion[]> {
+    const { data } = await apiClient.get<RegistroAccion[]>(`${resource}/administrador/${rut}`);
+    return Array.isArray(data) ? data : [];
   }
 };
 
