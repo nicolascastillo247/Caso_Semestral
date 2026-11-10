@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "@fontsource-variable/inter";
+@import "./tienda/tienda.css";
+
 
 @custom-variant dark (&:is(.dark *));
 

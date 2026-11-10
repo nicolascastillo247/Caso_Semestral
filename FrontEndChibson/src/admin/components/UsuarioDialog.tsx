@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Trash2 } from 'lucide-react';
 
-import { RUT_SESION } from '../../services/api';
+import { rutSesion } from '../../services/api';
 import UsuarioService, { type EstadoUsuario, type RolUsuario, type Usuario } from '../../services/usuario.service';
 import { estiloCampo, textoEnum } from '../../utils/formato';
 import { mensajeError } from '../../utils/errores';
@@ -42,7 +42,7 @@ interface FormularioProps {
 
 const FormularioUsuario = ({ usuario, onCerrar, onTerminado }: FormularioProps) => {
   const editando = usuario !== null;
-  const esMiCuenta = usuario?.rut === RUT_SESION;
+  const esMiCuenta = usuario?.rut === rutSesion();
 
   const [rut, setRut] = useState(usuario?.rut ?? '');
   const [nombres, setNombres] = useState(usuario?.nombres ?? '');

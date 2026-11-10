@@ -1,0 +1,34 @@
+/* Estilos de la tienda (parte del cliente).
+   Se importa desde src/index.css, debajo de @import "tailwindcss". */
+
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/poppins/700.css";
+
+/* Colores y fuente de Chibson. Crean clases como bg-crema, text-ocre, border-dorado, font-titulo... */
+@theme {
+  --color-crema: #f2efbd;
+  --color-dorado: #f2ca80;
+  --color-dorado-oscuro: #deb160;
+  --color-ocre: #9d6d1b;
+  --color-gris: #87898c;
+  --color-fondo: #f2f2f0;
+  --color-tinta: #0d0d0d;
+  --font-titulo: "Poppins", sans-serif;
+}
+
+/* Dentro de la tienda, todos los títulos usan Poppins (en el panel de administración no se aplica) */
+@layer base {
+  .tienda :is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-titulo);
+    color: var(--color-tinta);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Igual que antes con Bootstrap: los párrafos dejan un espacio abajo.
+     Una clase mb-* en el párrafo lo reemplaza. */
+  .tienda p {
+    margin-bottom: 1rem;
+  }
+}

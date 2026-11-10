@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router';
 import { ArrowRight, House, UserCircle } from 'lucide-react';
 
+import { useAuth } from '../../tienda/context/AuthContext';
+
 import { buttonVariants } from '../../components/ui/button';
 import {
   DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger,
@@ -35,6 +37,7 @@ const estiloLinkLateral = ({ isActive }: { isActive: boolean }) =>
 
 export const AdminLayout = () => {
   const navigate = useNavigate();
+  const { sesion, cerrarSesion } = useAuth();
   const [menuLateralAbierto, setMenuLateralAbierto] = useState(false);
 
   return (
@@ -70,17 +73,26 @@ export const AdminLayout = () => {
           {/* Menú del perfil */}
           <DropdownMenu>
             <DropdownMenuTrigger
-              className="rounded-md p-2 text-zinc-300 hover:bg-zinc-800 hover:text-white"
+              className="flex items-center gap-2 rounded-md p-2 text-zinc-300 hover:bg-zinc-800 hover:text-white"
               aria-label="Menú del perfil"
             >
               <UserCircle className="size-6" />
+              {/* Nombre del administrador que inició sesión */}
+              {sesion && <span className="hidden text-sm sm:inline">{sesion.nombres}</span>}
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem disabled>Perfil</DropdownMenuItem>
               <DropdownMenuItem disabled>Configuración</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => navigate('/')}>Ir a la tienda</DropdownMenuItem>
               <DropdownMenuSeparator />
-              {/* Sin login todavía: por ahora solo vuelve al inicio */}
-              <DropdownMenuItem onClick={() => navigate('/')}>Cerrar sesión</DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => {
+                  cerrarSesion();
+                  navigate('/login');
+                }}
+              >
+                Cerrar sesión
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </nav>

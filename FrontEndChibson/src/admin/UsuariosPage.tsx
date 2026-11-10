@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ChevronDown, Filter, History, Pencil, RefreshCw, Search, UserPlus } from 'lucide-react';
 
 import useUsuarios from '../hooks/useUsuarios';
-import { RUT_SESION } from '../services/api';
+import { rutSesion } from '../services/api';
 import UsuarioService, { type EstadoUsuario, type RolUsuario, type Usuario } from '../services/usuario.service';
 import { estiloCampo, fechaDeHoy, textoEnum } from '../utils/formato';
 import { mensajeError } from '../utils/errores';
@@ -248,7 +248,7 @@ export const UsuariosPage = () => {
           )}
 
           {visibles.map((u) => {
-            const esMiCuenta = u.rut === RUT_SESION;
+            const esMiCuenta = u.rut === rutSesion();
             return (
               <TableRow key={u.rut}>
                 <TableCell>{u.rut}</TableCell>
