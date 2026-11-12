@@ -33,12 +33,20 @@ export const botonPeligro = boton('peligro')
 export const anchoCompleto = ' w-full'
 
 // Formularios
+// La forma del campo va separada de sus colores: así el campo con error no tiene clases que choquen
+const formaCampo =
+  'rounded-md border px-3 text-sm text-tinta shadow-xs outline-none placeholder:text-gris ' +
+  'focus-visible:ring-3 disabled:bg-fondo disabled:opacity-70'
+const coloresCampo = 'border-gris/50 bg-white focus-visible:border-dorado focus-visible:ring-dorado/30'
+const coloresError = 'border-red-500 bg-red-50 focus-visible:border-red-500 focus-visible:ring-red-500/25'
+
 // campoBase no trae alto ni ancho: se usa cuando hay que darle otro tamaño (por ejemplo `${campoBase} h-8 w-auto`)
-export const campoBase =
-  'rounded-md border border-gris/50 bg-white px-3 text-sm text-tinta shadow-xs outline-none ' +
-  'placeholder:text-gris focus-visible:border-dorado focus-visible:ring-3 focus-visible:ring-dorado/30 disabled:bg-fondo disabled:opacity-70'
+export const campoBase = `${formaCampo} ${coloresCampo}`
 
 export const campo = `${campoBase} h-10 w-full`
+
+// Mismo campo, marcado en rojo porque su valor no es válido
+export const campoConError = `${formaCampo} ${coloresError} h-10 w-full`
 
 export const areaTexto = `${campoBase} min-h-28 w-full py-2`
 

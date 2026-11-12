@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import { Link } from 'react-router';
 import {
   AlertTriangle, ArrowRight, CalendarDays, ClipboardList, LifeBuoy, RefreshCw, TrendingDown, TrendingUp,
@@ -7,6 +7,10 @@ import {
 import useDashboard from '../hooks/useDashboard';
 import type { Venta } from '../services/venta.service';
 import { fechaDeHoy, pesos, textoEnum } from '../utils/formato';
+
+import {
+  GraficoAcumulado, GraficoBarras, GraficoVentasPorDia, pesosCorto, type PuntoAcumulado, type PuntoDia,
+} from './components/GraficosDashboard';
 
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
@@ -36,11 +40,28 @@ const NOMBRE_MES_PASADO = mayuscula(
   new Date(ahora.getFullYear(), ahora.getMonth() - 1, 1).toLocaleDateString('es-CL', { month: 'long' }),
 );
 
-// Los últimos 7 días, del más antiguo a hoy
-const ULTIMOS_7_DIAS = Array.from({ length: 7 }, (_, i) => {
-  const d = new Date(ahora.getFullYear(), ahora.getMonth(), ahora.getDate() - (6 - i));
-  return { iso: iso(d), etiqueta: d.toLocaleDateString('es-CL', { weekday: 'short', day: 'numeric' }) };
-});
+// Los últimos N días, del más antiguo a hoy (para el gráfico de ventas por día)
+const ultimosDias = (cantidad: number) =>
+  Array.from({ length: cantidad }, (_, i) => {
+    const d = new Date(ahora.getFullYear(), ahora.getMonth(), ahora.getDate() - (cantidad - 1 - i));
+    return {
+      iso: iso(d),
+      etiqueta: d.toLocaleDateString('es-CL', { weekday: 'short', day: 'numeric' }),
+      fecha: mayuscula(d.toLocaleDateString('es-CL', { weekday: 'long', day: 'numeric', month: 'long' })),
+    };
+  });
+
+// Venta neta acumulada día a día: el 5 suma del 1 al 5 del mes
+const acumuladoPorDia = (ventas: Venta[], anio: number, mes: number, hastaDia: number) => {
+  const resultado: number[] = [];
+  let total = 0;
+  for (let dia = 1; dia <= hastaDia; dia++) {
+    const fecha = iso(new Date(anio, mes, dia));
+    total += sumaNeta(ventas.filter((v) => diaDe(v.fecha) === fecha));
+    resultado.push(total);
+  }
+  return resultado;
+};
 
 // ---------- Cálculos ----------
 
@@ -101,31 +122,13 @@ const PieTarjeta = ({ texto }: { texto: string }) => (
 
 const SinDatos = () => <span className="text-base font-normal text-muted-foreground">Sin datos</span>;
 
-// Barras horizontales simples, sin librerías de gráficos
-const Barras = ({ filas, formato }: { filas: [string, number][]; formato: (n: number) => string }) => {
-  const maximo = Math.max(1, ...filas.map(([, v]) => v));
-  return (
-    <div className="space-y-2">
-      {filas.map(([etiqueta, v]) => (
-        <div key={etiqueta} className="space-y-1">
-          <div className="flex justify-between text-sm">
-            <span>{etiqueta}</span>
-            <span className="font-medium">{formato(v)}</span>
-          </div>
-          <div className="h-2 rounded-full bg-zinc-100">
-            <div className="h-2 rounded-full bg-zinc-800" style={{ width: `${(v / maximo) * 100}%` }} />
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
-
 // ---------- Página ----------
 
 export const DashboardPage = () => {
   const { datos, loading, recargar } = useDashboard();
   const { ventas, pedidos, stockBajo, ticketsAbiertos, devolucionesPendientes, clientesNuevosHoy } = datos;
+  // Rango del gráfico de ventas por día: 7 o 30 días
+  const [rangoDias, setRangoDias] = useState<7 | 30>(7);
 
   // Ventas del día, del mes y del mismo tramo del mes pasado
   const ventasHoy = ventas?.filter((v) => diaDe(v.fecha) === HOY) ?? [];
@@ -135,11 +138,23 @@ export const DashboardPage = () => {
   const montoMesPasado = sumaNeta(ventasMesPasado);
   const variacion = montoMesPasado > 0 ? ((montoMes - montoMesPasado) / montoMesPasado) * 100 : null;
 
-  const ventas7Dias: [string, number][] = ULTIMOS_7_DIAS.map((d) => [
-    d.etiqueta,
-    sumaNeta(ventas?.filter((v) => diaDe(v.fecha) === d.iso) ?? []),
-  ]);
-  const hayVentas7Dias = ventas7Dias.some(([, v]) => v > 0);
+  // Gráfico 1: venta neta de cada día
+  const ventasPorDia: PuntoDia[] = ultimosDias(rangoDias).map((d) => ({
+    etiqueta: d.etiqueta,
+    fecha: d.fecha,
+    monto: sumaNeta(ventas?.filter((v) => diaDe(v.fecha) === d.iso) ?? []),
+  }));
+  const hayVentasEnRango = ventasPorDia.some((d) => d.monto > 0);
+
+  // Gráfico 2: acumulado del mes actual (hasta hoy) contra el mes pasado completo
+  const acumuladoActual = acumuladoPorDia(ventas ?? [], ahora.getFullYear(), ahora.getMonth(), DIA_DEL_MES);
+  const acumuladoAnterior = acumuladoPorDia(ventas ?? [], ahora.getFullYear(), ahora.getMonth() - 1, ultimoDiaMesPasado);
+  const acumulado: PuntoAcumulado[] = Array.from({ length: Math.max(DIA_DEL_MES, ultimoDiaMesPasado) }, (_, i) => ({
+    dia: i + 1,
+    actual: acumuladoActual[i],
+    anterior: acumuladoAnterior[i],
+  }));
+  const hayVentasDosMeses = (acumuladoActual.at(-1) ?? 0) > 0 || (acumuladoAnterior.at(-1) ?? 0) > 0;
 
   const productosMes = productosVendidos(ventasMes);
   const top5 = productosMes.slice(0, 5);
@@ -248,17 +263,33 @@ export const DashboardPage = () => {
       {/* Últimos 7 días + resumen rápido */}
       <div className="grid gap-4 lg:grid-cols-3">
         <Card className="lg:col-span-2">
-          <CardHeader>
-            <CardTitle>Ventas de los últimos 7 días</CardTitle>
-            <CardDescription>Se actualiza al ingresar al dashboard</CardDescription>
+          <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2">
+            <div className="space-y-1">
+              <CardTitle>Ventas de los últimos {rangoDias} días</CardTitle>
+              <CardDescription>Venta neta de cada día. Pasa el mouse para ver el monto.</CardDescription>
+            </div>
+            {/* El rango activo queda destacado y deshabilitado, igual que el navbar */}
+            <div className="flex gap-1">
+              {([7, 30] as const).map((dias) => (
+                <Button
+                  key={dias}
+                  size="sm"
+                  variant={rangoDias === dias ? 'default' : 'outline'}
+                  disabled={rangoDias === dias}
+                  onClick={() => setRangoDias(dias)}
+                >
+                  {dias} días
+                </Button>
+              ))}
+            </div>
           </CardHeader>
           <CardContent>
             {!ventas ? (
               <SinDatos />
-            ) : hayVentas7Dias ? (
-              <Barras filas={ventas7Dias} formato={pesos} />
+            ) : hayVentasEnRango ? (
+              <GraficoVentasPorDia datos={ventasPorDia} />
             ) : (
-              <p className="text-sm text-muted-foreground">No hay ventas registradas en los últimos 7 días.</p>
+              <p className="text-sm text-muted-foreground">No hay ventas registradas en los últimos {rangoDias} días.</p>
             )}
           </CardContent>
         </Card>
@@ -289,21 +320,47 @@ export const DashboardPage = () => {
         </Card>
       </div>
 
-      {/* Categorías + top 5 */}
+      {/* Mes actual vs. mes pasado + categorías */}
       <div className="grid gap-4 lg:grid-cols-3">
+        <Card className="lg:col-span-2">
+          <CardHeader>
+            <CardTitle>Ventas acumuladas del mes</CardTitle>
+            <CardDescription>
+              {NOMBRE_MES} hasta hoy comparado con {NOMBRE_MES_PASADO} completo. Si la línea azul va por encima, se está vendiendo más.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {!ventas ? (
+              <SinDatos />
+            ) : hayVentasDosMeses ? (
+              <GraficoAcumulado datos={acumulado} mes={NOMBRE_MES} mesPasado={NOMBRE_MES_PASADO} />
+            ) : (
+              <p className="text-sm text-muted-foreground">Sin ventas este mes ni el mes pasado.</p>
+            )}
+          </CardContent>
+        </Card>
+
         <Card>
           <CardHeader>
             <CardTitle>Ventas por categoría</CardTitle>
-            <CardDescription>{tramoMes}</CardDescription>
+            <CardDescription>Venta neta — {tramoMes}</CardDescription>
           </CardHeader>
           <CardContent>
             {porCategoria.length > 0 ? (
-              <Barras filas={porCategoria} formato={pesos} />
+              <GraficoBarras
+                datos={porCategoria.map(([nombre, valor]) => ({ nombre, valor }))}
+                etiqueta="Venta neta"
+                formato={pesosCorto}
+              />
             ) : (
               <p className="text-sm text-muted-foreground">Sin ventas este mes.</p>
             )}
           </CardContent>
         </Card>
+      </div>
+
+      {/* Top 5 + regiones */}
+      <div className="grid gap-4 lg:grid-cols-3">
 
         <Card className="lg:col-span-2">
           <CardHeader className="flex flex-row items-start justify-between">
@@ -343,10 +400,7 @@ export const DashboardPage = () => {
             </Table>
           </CardContent>
         </Card>
-      </div>
 
-      {/* Regiones + stock bajo */}
-      <div className="grid gap-4 lg:grid-cols-2">
         <Card>
           <CardHeader className="flex flex-row items-start justify-between">
             <div className="space-y-1">
@@ -359,13 +413,20 @@ export const DashboardPage = () => {
             {!pedidos ? (
               <SinDatos />
             ) : porRegion.length > 0 ? (
-              <Barras filas={porRegion} formato={(n) => `${n} ${n === 1 ? 'pedido' : 'pedidos'}`} />
+              <GraficoBarras
+                datos={porRegion.map(([nombre, valor]) => ({ nombre, valor }))}
+                etiqueta="Pedidos"
+                formato={(n) => `${n} ${n === 1 ? 'pedido' : 'pedidos'}`}
+              />
             ) : (
               <p className="text-sm text-muted-foreground">Sin pedidos este mes.</p>
             )}
           </CardContent>
         </Card>
+      </div>
 
+      {/* Stock bajo */}
+      <div className="grid gap-4">
         <Card>
           <CardHeader className="flex flex-row items-start justify-between">
             <div className="space-y-1">
