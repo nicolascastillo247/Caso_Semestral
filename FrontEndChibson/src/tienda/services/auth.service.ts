@@ -8,6 +8,8 @@ export interface Sesion {
   username: string
   rol: string
   permisos: string[]
+  // JWT que entrega el backend al iniciar sesión; se envía en cada petición
+  token: string
 }
 
 export interface Credenciales {
@@ -50,6 +52,7 @@ export const AuthService = {
       username: data.username,
       rol: data.rol,
       permisos: data.permisos ?? [],
+      token: data.token,
     }
   },
 

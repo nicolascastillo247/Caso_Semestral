@@ -8,6 +8,7 @@ import { mensajeError } from '../../utils/errores';
 import { Button } from '../../components/ui/button';
 import { Badge } from '../../components/ui/badge';
 import { Input } from '../../components/ui/input';
+import { urlImagen } from '../../tienda/utils/formato';
 import {
   Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle,
 } from '../../components/ui/dialog';
@@ -149,7 +150,7 @@ const FormularioNoticia = ({ noticia, onCerrar, onGuardado, onEliminada }: Formu
           URL de la imagen (opcional)
           <Input
             value={imagenUrl}
-            placeholder="https://..."
+            placeholder="img/guitarra.png o https://..."
             onChange={(e) => {
               setImagenUrl(e.target.value);
               setImagenRota(false);
@@ -161,7 +162,7 @@ const FormularioNoticia = ({ noticia, onCerrar, onGuardado, onEliminada }: Formu
             <p className="text-xs text-red-600">No se pudo cargar la imagen de esa URL.</p>
           ) : (
             <img
-              src={imagenUrl.trim()}
+              src={urlImagen(imagenUrl.trim())}
               alt="Vista previa"
               className="max-h-40 rounded-md border object-cover"
               onError={() => setImagenRota(true)}

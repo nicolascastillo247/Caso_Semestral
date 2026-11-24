@@ -15,6 +15,7 @@ import {
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from '../components/ui/table';
 import { Popover, PopoverContent, PopoverTrigger } from '../components/ui/popover';
+import { imagenRespaldo, urlImagen } from '../tienda/utils/formato';
 
 const FILAS_POR_PAGINA = 10;
 
@@ -244,7 +245,7 @@ export const NoticiasPage = () => {
               <TableCell>{n.idNoticia}</TableCell>
               <TableCell>
                 {n.imagenUrl ? (
-                  <img src={n.imagenUrl} alt="" className="h-10 w-16 rounded object-cover" />
+                  <img src={urlImagen(n.imagenUrl)} onError={imagenRespaldo} alt="" className="h-10 w-16 rounded object-cover" />
                 ) : (
                   <span className="flex h-10 w-16 items-center justify-center rounded bg-muted text-muted-foreground">
                     <ImageOff className="size-4" />

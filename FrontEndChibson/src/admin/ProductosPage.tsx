@@ -19,6 +19,7 @@ import {
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from '../components/ui/table';
 import { Popover, PopoverContent, PopoverTrigger } from '../components/ui/popover';
+import { imagenRespaldo, urlImagen } from '../tienda/utils/formato';
 
 const FILAS_POR_PAGINA = 10;
 const ESTADOS: EstadoProducto[] = ['ACTIVO', 'INACTIVO'];
@@ -246,7 +247,7 @@ export const ProductosPage = () => {
                 <TableCell className="font-mono text-xs">{p.sku}</TableCell>
                 <TableCell>
                   <div className="flex items-center gap-3">
-                    <img src={p.imagenUrl} alt="" className="size-10 shrink-0 rounded border object-contain" />
+                    <img src={urlImagen(p.imagenUrl)} onError={imagenRespaldo} alt="" className="size-10 shrink-0 rounded border object-contain" />
                     <div>
                       <span className="block font-medium">{p.modelo}</span>
                       <span className="text-xs text-muted-foreground">{p.marca}</span>

@@ -25,38 +25,46 @@ export const apiClient = axios.create({
   },
 })
 
-// El backend identifica al usuario por el encabezado X-Rut-Usuario (no usa token).
-// El RUT sale de la sesión que se guardó al iniciar sesión.
-export const HEADER_RUT = 'X-Rut-Usuario'
+// Autenticación con JWT: al iniciar sesión el backend entrega un token que se guarda en la sesión.
+// Cada petición lo envía en el encabezado "Authorization: Bearer <token>". El gateway lo valida
+// y, con el RUT que viene dentro del token, identifica al usuario ante los microservicios.
+export const HEADER_AUTORIZACION = 'Authorization'
 
-const leerRut = (): string | null => {
+export const tokenSesion = (): string | null => {
   try {
     const guardada = localStorage.getItem(SESION_KEY)
-    return guardada ? (JSON.parse(guardada) as { rut?: string }).rut ?? null : null
+    return guardada ? (JSON.parse(guardada) as { token?: string }).token ?? null : null
   } catch {
     return null
   }
 }
 
-apiClient.interceptors.request.use((config) => {
-  const rut = leerRut()
-  if (rut) {
-    config.headers[HEADER_RUT] = rut
-  }
-  return config
-})
+type ClienteAxios = ReturnType<typeof axios.create>
 
-apiClient.interceptors.response.use(
-  (respuesta) => respuesta,
-  (error) => {
-    // Si se mandó un RUT y el backend responde 401, la sesión guardada ya no sirve
-    const enviabaRut = Boolean(error?.config?.headers?.[HEADER_RUT])
-    if (error?.response?.status === 401 && enviabaRut) {
-      window.dispatchEvent(new Event(SESION_EXPIRADA))
+// Se usa en el cliente de la tienda y en el del panel de administración
+export const agregarToken = (cliente: ClienteAxios) => {
+  cliente.interceptors.request.use((config) => {
+    const token = tokenSesion()
+    if (token) {
+      config.headers[HEADER_AUTORIZACION] = `Bearer ${token}`
     }
-    return Promise.reject(error)
-  },
-)
+    return config
+  })
+
+  cliente.interceptors.response.use(
+    (respuesta) => respuesta,
+    (error) => {
+      // Si se mandó el token y el backend responde 401, el token expiró o no es válido
+      const enviabaToken = Boolean(error?.config?.headers?.[HEADER_AUTORIZACION])
+      if (error?.response?.status === 401 && enviabaToken) {
+        window.dispatchEvent(new Event(SESION_EXPIRADA))
+      }
+      return Promise.reject(error)
+    },
+  )
+}
+
+agregarToken(apiClient)
 
 // Nuestro backend devuelve las listas como un arreglo normal [...].
 // Si alguna vez llegan con HATEOAS ({ _embedded: { productos: [...] } }), también se aceptan.

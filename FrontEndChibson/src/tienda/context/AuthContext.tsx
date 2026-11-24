@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { SESION_EXPIRADA, SESION_KEY } from '../api/apiClient'
 import AuthService, { type Credenciales, type Sesion } from '../services/auth.service'
+import { tokenExpirado } from '../utils/jwt'
 
 interface AuthContextValue {
   sesion: Sesion | null
@@ -13,10 +14,16 @@ interface AuthContextValue {
 
 const AuthContext = createContext<AuthContextValue | null>(null)
 
-const leerSesion = (): Sesion | null => {
+// Al abrir la página se recupera la sesión guardada, pero solo si su token sigue vigente
+export const leerSesion = (): Sesion | null => {
   try {
     const guardada = localStorage.getItem(SESION_KEY)
-    return guardada ? (JSON.parse(guardada) as Sesion) : null
+    const sesion = guardada ? (JSON.parse(guardada) as Sesion) : null
+    if (sesion && tokenExpirado(sesion.token)) {
+      localStorage.removeItem(SESION_KEY)
+      return null
+    }
+    return sesion
   } catch {
     return null
   }
