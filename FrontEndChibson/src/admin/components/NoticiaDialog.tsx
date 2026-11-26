@@ -8,7 +8,7 @@ import { mensajeError } from '../../utils/errores';
 import { Button } from '../../components/ui/button';
 import { Badge } from '../../components/ui/badge';
 import { Input } from '../../components/ui/input';
-import { urlImagen } from '../../tienda/utils/formato';
+import { SelectorImagen } from './SelectorImagen';
 import {
   Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle,
 } from '../../components/ui/dialog';
@@ -49,9 +49,11 @@ const FormularioNoticia = ({ noticia, onCerrar, onGuardado, onEliminada }: Formu
   const [titulo, setTitulo] = useState(noticia?.titulo ?? '');
   const [categoria, setCategoria] = useState<CategoriaNoticia>(noticia?.categoria ?? 'ANUNCIO');
   const [fechaPublicacion, setFechaPublicacion] = useState(noticia?.fechaPublicacion ?? '');
-  const [imagenUrl, setImagenUrl] = useState(noticia?.imagenUrl ?? '');
+  // imagen: nombre del archivo en el backend (se guarda) · imagenUrl: dirección para la vista previa
+  const [imagen, setImagen] = useState<string | null>(noticia?.imagen ?? null);
+  const [imagenUrl, setImagenUrl] = useState<string | null>(noticia?.imagenUrl ?? null);
+  const [subiendo, setSubiendo] = useState(false);
   const [contenido, setContenido] = useState(noticia?.contenido ?? '');
-  const [imagenRota, setImagenRota] = useState(false);
 
   const [guardando, setGuardando] = useState(false);
   const [confirmando, setConfirmando] = useState(false);
@@ -65,7 +67,7 @@ const FormularioNoticia = ({ noticia, onCerrar, onGuardado, onEliminada }: Formu
     const datos = {
       titulo: titulo.trim(),
       contenido: contenido.trim(),
-      imagenUrl: imagenUrl.trim(),
+      imagen,
       categoria,
       fechaPublicacion: fechaPublicacion || undefined,
     };
@@ -146,29 +148,18 @@ const FormularioNoticia = ({ noticia, onCerrar, onGuardado, onEliminada }: Formu
           <p className="text-xs text-muted-foreground">Si la dejas vacía, al publicar se usa la fecha de hoy.</p>
         )}
 
-        <label className="flex flex-col gap-1 text-sm">
-          URL de la imagen (opcional)
-          <Input
-            value={imagenUrl}
-            placeholder="img/guitarra.png o https://..."
-            onChange={(e) => {
-              setImagenUrl(e.target.value);
-              setImagenRota(false);
-            }}
-          />
-        </label>
-        {imagenUrl.trim() !== '' && (
-          imagenRota ? (
-            <p className="text-xs text-red-600">No se pudo cargar la imagen de esa URL.</p>
-          ) : (
-            <img
-              src={urlImagen(imagenUrl.trim())}
-              alt="Vista previa"
-              className="max-h-40 rounded-md border object-cover"
-              onError={() => setImagenRota(true)}
-            />
-          )
-        )}
+        <SelectorImagen
+          etiqueta="Imagen (opcional)"
+          imagenUrl={imagenUrl}
+          subir={(archivo) => NoticiaService.subirImagen(archivo)}
+          onCambio={(subida) => {
+            setImagen(subida?.imagen ?? null);
+            setImagenUrl(subida?.imagenUrl ?? null);
+          }}
+          onSubiendo={setSubiendo}
+          opcional
+          deshabilitado={guardando}
+        />
 
         <label className="flex flex-col gap-1 text-sm">
           Contenido
@@ -207,15 +198,15 @@ const FormularioNoticia = ({ noticia, onCerrar, onGuardado, onEliminada }: Formu
         <div className="flex flex-wrap justify-end gap-2">
           <Button variant="outline" onClick={onCerrar} disabled={guardando}>Cancelar</Button>
           {editando ? (
-            <Button onClick={() => void guardar(false)} disabled={guardando}>
+            <Button onClick={() => void guardar(false)} disabled={guardando || subiendo}>
               {guardando ? 'Guardando...' : 'Guardar cambios'}
             </Button>
           ) : (
             <>
-              <Button variant="secondary" onClick={() => void guardar(false)} disabled={guardando}>
+              <Button variant="secondary" onClick={() => void guardar(false)} disabled={guardando || subiendo}>
                 Guardar borrador
               </Button>
-              <Button onClick={() => void guardar(true)} disabled={guardando}>
+              <Button onClick={() => void guardar(true)} disabled={guardando || subiendo}>
                 {guardando ? 'Guardando...' : 'Publicar'}
               </Button>
             </>

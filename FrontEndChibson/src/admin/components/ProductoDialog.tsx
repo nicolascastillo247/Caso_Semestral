@@ -8,7 +8,7 @@ import { mensajeError } from '../../utils/errores';
 import { Button } from '../../components/ui/button';
 import { Badge } from '../../components/ui/badge';
 import { Input } from '../../components/ui/input';
-import { urlImagen } from '../../tienda/utils/formato';
+import { SelectorImagen } from './SelectorImagen';
 import {
   Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle,
 } from '../../components/ui/dialog';
@@ -50,17 +50,19 @@ const FormularioProducto = ({ producto, onCerrar, onTerminado }: FormularioProps
   const [precio, setPrecio] = useState(producto ? String(producto.precio) : '');
   const [stockDisponible, setStockDisponible] = useState(producto ? String(producto.stockDisponible) : '');
   const [stockMinimo, setStockMinimo] = useState(producto ? String(producto.stockMinimo) : '5');
+  // imagen: nombre del archivo en el backend (se guarda) · imagenUrl: dirección para la vista previa
+  const [imagen, setImagen] = useState(producto?.imagen ?? '');
   const [imagenUrl, setImagenUrl] = useState(producto?.imagenUrl ?? '');
+  const [subiendo, setSubiendo] = useState(false);
   const [descripcion, setDescripcion] = useState(producto?.descripcion ?? '');
   const [activo, setActivo] = useState(true);
-  const [imagenRota, setImagenRota] = useState(false);
 
   const [guardando, setGuardando] = useState(false);
   const [confirmando, setConfirmando] = useState(false);
   const [error, setError] = useState('');
 
   const guardar = async () => {
-    if (modelo.trim() === '' || marca.trim() === '' || imagenUrl.trim() === '') {
+    if (modelo.trim() === '' || marca.trim() === '' || imagen === '') {
       setError('El modelo, la marca y la imagen son obligatorios.');
       return;
     }
@@ -78,7 +80,7 @@ const FormularioProducto = ({ producto, onCerrar, onTerminado }: FormularioProps
       descripcion: descripcion.trim(),
       precio: Number(precio),
       categoria,
-      imagenUrl: imagenUrl.trim(),
+      imagen,
       stockDisponible: Number(stockDisponible),
       stockMinimo: Number(stockMinimo),
     };
@@ -165,29 +167,17 @@ const FormularioProducto = ({ producto, onCerrar, onTerminado }: FormularioProps
           </label>
         </div>
 
-        <label className="flex flex-col gap-1 text-sm">
-          URL de la imagen
-          <Input
-            value={imagenUrl}
-            placeholder="img/guitarra.png o https://..."
-            onChange={(e) => {
-              setImagenUrl(e.target.value);
-              setImagenRota(false);
-            }}
-          />
-        </label>
-        {imagenUrl.trim() !== '' && (
-          imagenRota ? (
-            <p className="text-xs text-red-600">No se pudo cargar la imagen de esa URL.</p>
-          ) : (
-            <img
-              src={urlImagen(imagenUrl.trim())}
-              alt="Vista previa"
-              className="max-h-40 rounded-md border object-contain"
-              onError={() => setImagenRota(true)}
-            />
-          )
-        )}
+        <SelectorImagen
+          etiqueta="Imagen"
+          imagenUrl={imagenUrl}
+          subir={(archivo) => ProductoService.subirImagen(archivo)}
+          onCambio={(subida) => {
+            setImagen(subida?.imagen ?? '');
+            setImagenUrl(subida?.imagenUrl ?? '');
+          }}
+          onSubiendo={setSubiendo}
+          deshabilitado={guardando}
+        />
 
         <label className="flex flex-col gap-1 text-sm">
           Descripción (opcional)
@@ -230,7 +220,7 @@ const FormularioProducto = ({ producto, onCerrar, onTerminado }: FormularioProps
 
         <div className="flex justify-end gap-2">
           <Button variant="outline" onClick={onCerrar} disabled={guardando}>Cancelar</Button>
-          <Button onClick={() => void guardar()} disabled={guardando}>
+          <Button onClick={() => void guardar()} disabled={guardando || subiendo}>
             {guardando ? 'Guardando...' : editando ? 'Guardar cambios' : 'Crear producto'}
           </Button>
         </div>

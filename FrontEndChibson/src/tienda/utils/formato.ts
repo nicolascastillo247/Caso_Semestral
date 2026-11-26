@@ -1,4 +1,5 @@
 import type { SyntheticEvent } from 'react'
+import { API_BASE_URL } from '../api/apiClient'
 
 const formateadorPrecio = new Intl.NumberFormat('es-CL')
 
@@ -47,6 +48,8 @@ export const estrellas = (calificacion: number): string => {
 
 export const urlImagen = (url?: string | null): string => {
   if (!url) return '/img/logo.png'
+  // Imágenes de productos y noticias: están en el backend y se piden al gateway
+  if (url.startsWith('/imagenes/')) return `${API_BASE_URL}${url}`
   if (/^(https?:)?\/\//.test(url) || url.startsWith('/') || url.startsWith('data:')) return url
   return `/${url}`
 }

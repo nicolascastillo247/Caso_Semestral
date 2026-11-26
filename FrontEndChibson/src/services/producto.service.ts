@@ -1,4 +1,5 @@
 import { apiClient } from './api';
+import { subirImagen, type ImagenSubida } from './imagen.service';
 
 export type Categoria = 'GUITARRA' | 'BAJO' | 'PERCUSION' | 'TECLAS' | 'VIENTO' | 'CUERDAS';
 // INACTIVO = no aparece en el catálogo público. "Agotado" no es un estado: es stock 0.
@@ -18,7 +19,8 @@ export interface Producto {
   precio: number;
   categoria: Categoria;
   estado: EstadoProducto;
-  imagenUrl: string;
+  imagen: string; // nombre del archivo en la carpeta de imágenes del backend
+  imagenUrl: string; // dirección para mostrarla (la arma el backend)
   fichaTecnica: string | null; // texto original "cuerpo:caoba;trastes:22"
   especificaciones: Especificacion[];
   stockDisponible: number;
@@ -36,7 +38,7 @@ export interface ProductoForm {
   descripcion: string;
   precio: number;
   categoria: Categoria;
-  imagenUrl: string;
+  imagen: string; // nombre que devolvió subirImagen()
   stockDisponible: number; // al crear es el stock inicial
   stockMinimo: number;
   activo?: boolean; // solo al crear
@@ -91,6 +93,11 @@ export const ProductoService = {
   async editarFicha(sku: string, texto: string): Promise<Producto> {
     const { data } = await apiClient.put<Producto>(`${resource}/${sku}/ficha-tecnica`, { texto });
     return data;
+  },
+
+  // Sube la foto a la carpeta de ms-productos; devuelve el nombre para guardar en "imagen"
+  subirImagen(archivo: File): Promise<ImagenSubida> {
+    return subirImagen(`${resource}/imagen`, archivo);
   }
 };
 
